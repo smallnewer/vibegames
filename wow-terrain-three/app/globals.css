@@ -1,0 +1,327 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  --ink: #f3e5c2;
+  --muted: #c9baa0;
+  --panel: rgba(19, 25, 21, 0.7);
+  --line: rgba(237, 209, 151, 0.26);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #7f9c91;
+}
+
+body {
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Microsoft YaHei", sans-serif;
+}
+
+button {
+  font: inherit;
+}
+
+.world {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.world__canvas {
+  position: absolute;
+  inset: 0;
+  touch-action: none;
+}
+
+.world__canvas canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  outline: none;
+}
+
+.world__shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 44%, transparent 55%, rgba(11, 15, 13, 0.06) 130%);
+}
+
+.world__hud {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  z-index: 2;
+  width: min(330px, calc(100vw - 44px));
+  padding: 18px 19px 16px;
+  border: 1px solid var(--line);
+  border-radius: 3px 16px 3px 16px;
+  background: var(--panel);
+  box-shadow: 0 18px 45px rgba(9, 15, 12, 0.22);
+  backdrop-filter: blur(10px);
+}
+
+.world__eyebrow {
+  margin: 0 0 7px;
+  color: #eacb8d;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.world__title {
+  margin: 0;
+  color: #fff2d2;
+  font-family: Georgia, "Songti SC", serif;
+  font-size: clamp(25px, 4vw, 35px);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  text-shadow: 0 2px 14px rgba(255, 207, 119, 0.2);
+}
+
+.world__note {
+  margin: 10px 0 15px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.world__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.world__tag {
+  padding: 5px 8px;
+  border: 1px solid rgba(234, 203, 141, 0.18);
+  border-radius: 999px;
+  color: #ddcfb3;
+  background: rgba(235, 209, 157, 0.06);
+  font-size: 10px;
+  letter-spacing: 0.05em;
+}
+
+.world__controller {
+  display: grid;
+  gap: 6px;
+  margin-top: 12px;
+  padding: 8px;
+  border: 1px solid rgba(232, 210, 166, 0.16);
+  border-radius: 3px 11px 3px 11px;
+  background: rgba(8, 14, 11, 0.24);
+}
+
+.world__controller-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 34px;
+  padding: 7px 10px;
+  border: 1px solid rgba(232, 199, 133, 0.3);
+  border-radius: 2px 9px 2px 9px;
+  color: #f1ddb5;
+  background: rgba(145, 102, 48, 0.18);
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.world__controller-button:hover:not(:disabled) {
+  border-color: rgba(243, 215, 158, 0.55);
+  background: rgba(171, 119, 51, 0.3);
+}
+
+.world__controller-button:focus-visible {
+  outline: 2px solid #f1cd87;
+  outline-offset: 3px;
+}
+
+.world__controller-button:disabled {
+  cursor: default;
+}
+
+.world__controller-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #948a76;
+}
+
+.world__controller-status {
+  margin: 0 2px;
+  color: #bfb49d;
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.world__controller--connected .world__controller-button {
+  border-color: rgba(117, 211, 162, 0.36);
+  color: #c9f0d9;
+  background: rgba(47, 126, 84, 0.22);
+}
+
+.world__controller--connected .world__controller-dot {
+  background: #75d3a2;
+  box-shadow: 0 0 10px rgba(117, 211, 162, 0.7);
+}
+
+.world__controller--error .world__controller-status,
+.world__controller--unsupported .world__controller-status {
+  color: #e6a696;
+}
+
+.world__modes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-top: 14px;
+  padding: 4px;
+  border: 1px solid rgba(232, 210, 166, 0.16);
+  border-radius: 3px 11px 3px 11px;
+  background: rgba(8, 14, 11, 0.24);
+}
+
+.world__mode {
+  min-height: 32px;
+  padding: 6px 10px;
+  border: 1px solid transparent;
+  border-radius: 2px 8px 2px 8px;
+  color: #bfb49d;
+  background: transparent;
+  cursor: pointer;
+}
+
+.world__mode:hover {
+  color: #f0dfbd;
+}
+
+.world__mode:focus-visible {
+  outline: 2px solid #d9c08e;
+  outline-offset: 2px;
+}
+
+.world__mode--active {
+  border-color: rgba(222, 207, 172, 0.24);
+  color: #f5e7c9;
+  background: rgba(104, 119, 83, 0.3);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.world__tour {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 14px;
+  padding: 7px 10px;
+  border: 1px solid rgba(232, 199, 133, 0.3);
+  border-radius: 2px 10px 2px 10px;
+  color: #f1ddb5;
+  background: rgba(145, 102, 48, 0.18);
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+
+.world__tour:hover {
+  border-color: rgba(243, 215, 158, 0.55);
+  background: rgba(171, 119, 51, 0.3);
+}
+
+.world__tour:focus-visible {
+  outline: 2px solid #f1cd87;
+  outline-offset: 3px;
+}
+
+.world__tour-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #f0bd63;
+  box-shadow: 0 0 10px #f0bd63;
+}
+
+.world__tour--paused .world__tour-dot {
+  background: #948a76;
+  box-shadow: none;
+}
+
+.world__walk-help {
+  margin: 12px 1px 0;
+  color: #d8cdb6;
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.world__players {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 12px;
+}
+
+.world__player {
+  padding: 6px 9px;
+  border: 1px solid currentColor;
+  border-radius: 2px 9px 2px 9px;
+  background: rgba(10, 15, 13, 0.34);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.world__player--one {
+  color: #f1c66d;
+}
+
+.world__player--two {
+  color: #85d5ed;
+}
+
+.world__tip {
+  position: absolute;
+  right: 20px;
+  bottom: 18px;
+  z-index: 2;
+  margin: 0;
+  padding: 7px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  color: rgba(248, 238, 214, 0.78);
+  background: rgba(15, 21, 18, 0.48);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  backdrop-filter: blur(8px);
+}
+
+@media (max-width: 640px) {
+  .world__hud {
+    top: 12px;
+    left: 12px;
+    width: calc(100vw - 24px);
+    padding: 14px 15px 13px;
+  }
+
+  .world__note {
+    margin: 7px 0 10px;
+  }
+
+  .world__tip {
+    right: 10px;
+    bottom: 10px;
+  }
+}
