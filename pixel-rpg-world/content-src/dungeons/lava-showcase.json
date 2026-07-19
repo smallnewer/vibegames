@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "id": "dungeon.lava_showcase",
+  "name": "熔火王座",
+  "lore": {
+    "region": "余烬监城",
+    "summary": "从余烬监城截取的单厅演示，王座与熔流仍保留着守炉时代的样貌。",
+    "boss": {
+      "name": "赫恩之影",
+      "title": "铁誓残像",
+      "background": "典狱长留在王座前的一段战斗记忆，只会重复最后一次守城。"
+    }
+  },
+  "manifest": {
+    "themeId": "theme.lava_fortress",
+    "resource": { "id": "ember_crystal", "name": "余烬晶核" }
+  },
+  "map": {
+    "mode": "showcase",
+    "screenWidth": 18,
+    "screenDepth": 12,
+    "bounds": { "minX": -9, "maxX": 9, "minZ": -6, "maxZ": 6 },
+    "sections": [
+      { "id": "section.lava_bridge", "preset": "lava_bridge_arena", "gridX": 0, "gridZ": 0, "rotation": 0 }
+    ],
+    "navigation": {
+      "walkable": [
+        { "id": "walkable.lava_room", "x": 0, "z": 0, "width": 18, "depth": 12 }
+      ],
+      "blockers": [
+        { "id": "blocker.lava_pool_left", "x": -4, "z": 3.8, "width": 6, "depth": 3, "height": 2 },
+        { "id": "blocker.lava_pool_right", "x": 4, "z": 3.8, "width": 6, "depth": 3, "height": 2 }
+      ]
+    }
+  },
+  "spawnPoints": [
+    { "id": "spawn.lava_player_1", "x": -6, "z": 0 },
+    { "id": "spawn.lava_player_2", "x": -7, "z": 0 },
+    { "id": "spawn.lava_player_3", "x": -6, "z": 1 },
+    { "id": "spawn.lava_player_4", "x": -7, "z": 1 }
+  ],
+  "enemies": [
+    { "id": "enemy.ember_warden", "kind": "boss.ember_colossus", "encounter": "encounter.ember_throne", "x": 2, "z": 0 }
+  ],
+  "encounters": [
+    { "id": "encounter.ember_throne", "members": ["enemy.ember_warden"] }
+  ],
+  "interactions": [
+    {
+      "id": "interaction.ember_crystal",
+      "name": "余烬晶核",
+      "kind": "harvest",
+      "trigger": "interact",
+      "x": -6,
+      "z": 1,
+      "radius": 1.4,
+      "reward": { "resource": "ember_crystal", "name": "余烬晶核", "amount": 1 }
+    },
+    {
+      "id": "interaction.ember_throne_trigger",
+      "name": "熔火守卫遭遇",
+      "kind": "encounter",
+      "trigger": "enter",
+      "encounter": "encounter.ember_throne",
+      "x": -1,
+      "z": 0,
+      "radius": 1
+    },
+    {
+      "id": "interaction.ember_throne_door",
+      "name": "王座闸门",
+      "kind": "door",
+      "trigger": "interact",
+      "x": 4,
+      "z": 0,
+      "radius": 1.5
+    },
+    {
+      "id": "interaction.ember_return_portal",
+      "name": "熔火传送门",
+      "kind": "portal",
+      "trigger": "interact",
+      "x": 7,
+      "z": 0,
+      "radius": 1.5,
+      "destination": { "x": -7, "z": -3 }
+    }
+  ],
+  "visual": {
+    "profile": "lava_fortress",
+    "clearColor": "#070304",
+    "groundColor": "#241519",
+    "groundSize": 18,
+    "enemy": {
+      "stone": "#2c2428",
+      "bone": "#b9a58a",
+      "crystal": "#ff6a24",
+      "emissive": "#ff2f0a",
+      "projectile": "#ff7a2b"
+    },
+    "interactions": {
+      "harvest": { "color": "#f5a43b", "emissive": "#d34a12" },
+      "encounter": { "color": "#b73220", "emissive": "#ff3b12" },
+      "doorStone": { "color": "#31262b", "emissive": "#090607" },
+      "doorGate": { "color": "#77503a", "emissive": "#44170d" },
+      "portal": { "color": "#7a291b", "emissive": "#d43c17" },
+      "portalActive": "#ffb13b"
+    }
+  },
+  "assets": [
+    { "id": "asset.forge_crate", "kind": "model", "url": "/game-assets/props/box.glb" }
+  ],
+  "placements": [
+    { "id": "placement.forge_crate_a", "asset": "asset.forge_crate", "section": "section.lava_bridge", "x": -4.7, "y": 0.2, "z": -2.4, "rotationY": 0.4, "scale": 0.7 },
+    { "id": "placement.forge_crate_b", "asset": "asset.forge_crate", "section": "section.lava_bridge", "x": 5.4, "y": 0.2, "z": -2.2, "rotationY": -0.5, "scale": 0.55 }
+  ],
+  "decorations": [
+    { "id": "decoration.lava_back_wall", "x": 0, "y": 1.5, "z": -5.7, "width": 18, "height": 3, "depth": 0.6, "color": "#24191d" },
+    { "id": "decoration.lava_bridge", "x": 0, "y": 0.15, "z": 0, "width": 16, "height": 0.3, "depth": 4, "color": "#3a292a" },
+    { "id": "decoration.lava_pillar_a", "x": -6.8, "y": 2, "z": -4.4, "width": 1.2, "height": 4, "depth": 1.2, "color": "#302225" },
+    { "id": "decoration.lava_pillar_b", "x": -2.4, "y": 2.4, "z": -4.6, "width": 1.2, "height": 4.8, "depth": 1.2, "color": "#302225" },
+    { "id": "decoration.lava_pillar_c", "x": 2.4, "y": 2.4, "z": -4.6, "width": 1.2, "height": 4.8, "depth": 1.2, "color": "#302225" },
+    { "id": "decoration.lava_pillar_d", "x": 6.8, "y": 2, "z": -4.4, "width": 1.2, "height": 4, "depth": 1.2, "color": "#302225" },
+    { "id": "decoration.lava_pool_left", "x": -4, "y": 0.03, "z": 3.8, "width": 6, "height": 0.06, "depth": 3, "color": "#ff4a12", "emissive": "#ff2408" },
+    { "id": "decoration.lava_pool_right", "x": 4, "y": 0.03, "z": 3.8, "width": 6, "height": 0.06, "depth": 3, "color": "#ff4a12", "emissive": "#ff2408" }
+  ],
+  "budgets": { "dynamicLights": 1, "estimatedDrawItems": 160, "estimatedTriangles": 12000 }
+}

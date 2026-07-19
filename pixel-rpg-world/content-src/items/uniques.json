@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "uniques": [
+    { "id": "item.unique.hearns_oathblade", "base": "item.base.longblade", "dungeon": "dungeon.production_foundation", "affixes": ["affix.power_melee", "affix.attribute_might", "affix.offense_crit", "affix.offense_attack_speed"] },
+    { "id": "item.unique.prisoners_mantle", "base": "item.base.chest", "dungeon": "dungeon.production_foundation", "affixes": ["affix.defense_health", "affix.defense_armor", "affix.resist_fire", "affix.attribute_vitality"] },
+    { "id": "item.unique.frost_bell_hammer", "base": "item.base.axe", "dungeon": "dungeon.frost_mine", "affixes": ["affix.power_melee", "affix.attribute_might", "affix.offense_crit_damage", "affix.offense_attack_speed"] },
+    { "id": "item.unique.blind_overseer_helm", "base": "item.base.head", "dungeon": "dungeon.frost_mine", "affixes": ["affix.defense_armor", "affix.defense_health", "affix.resist_ice", "affix.attribute_resolve"] },
+    { "id": "item.unique.last_index_bow", "base": "item.base.bow", "dungeon": "dungeon.sunken_library", "affixes": ["affix.power_ranged", "affix.attribute_finesse", "affix.offense_crit", "affix.utility_cooldown_recovery"] },
+    { "id": "item.unique.copper_archive_bracers", "base": "item.base.wrists", "dungeon": "dungeon.sunken_library", "affixes": ["affix.defense_armor", "affix.resist_storm", "affix.offense_attack_speed", "affix.utility_cooldown_recovery"] },
+    { "id": "item.unique.sporecrown_focus", "base": "item.base.focus", "dungeon": "dungeon.moss_sanctum", "affixes": ["affix.power_skill", "affix.attribute_resolve", "affix.resist_poison", "affix.utility_cooldown_recovery"] },
+    { "id": "item.unique.rootbound_greaves", "base": "item.base.feet", "dungeon": "dungeon.moss_sanctum", "affixes": ["affix.defense_health", "affix.defense_armor", "affix.resist_poison", "affix.utility_move_speed"] },
+    { "id": "item.unique.regents_coil_blade", "base": "item.base.sword", "dungeon": "dungeon.storm_throne", "affixes": ["affix.power_melee", "affix.attribute_finesse", "affix.resist_storm", "affix.offense_crit"] },
+    { "id": "item.unique.thunder_crown", "base": "item.base.head", "dungeon": "dungeon.storm_throne", "affixes": ["affix.defense_armor", "affix.resist_storm", "affix.offense_crit_damage", "affix.utility_cooldown_recovery"] }
+  ]
+}

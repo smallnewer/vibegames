@@ -1,0 +1,242 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://blocky-wilds.local/schema/abilities.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "kind", "abilities"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "kind": { "enum": ["player", "enemy"] },
+    "abilities": {
+      "type": "array",
+      "maxItems": 128,
+      "items": { "$ref": "#/$defs/ability" }
+    }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9_.-]+$", "maxLength": 100 },
+    "damageSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["damageType", "minBase", "maxBase", "scalingStat", "coefficient", "canCrit", "procCoefficient"],
+      "properties": {
+        "damageType": { "enum": ["physical", "fire", "ice", "poison", "storm"] },
+        "minBase": { "type": "integer", "minimum": 0 },
+        "maxBase": { "type": "integer", "minimum": 0 },
+        "scalingStat": { "enum": ["meleePower", "rangedPower", "skillPower"] },
+        "coefficient": { "type": "number", "minimum": 0 },
+        "canCrit": { "type": "boolean" },
+        "procCoefficient": { "type": "number", "minimum": 0 }
+      }
+    },
+    "healingValue": {
+      "oneOf": [
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["type", "amount"],
+          "properties": { "type": { "const": "flat" }, "amount": { "type": "number", "minimum": 0 } }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["type", "stat", "scale"],
+          "properties": {
+            "type": { "const": "stat" },
+            "stat": { "enum": ["maxHealth", "skillPower"] },
+            "scale": { "type": "number", "minimum": 0 }
+          }
+        }
+      ]
+    },
+    "effect": {
+      "oneOf": [
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["type", "children"],
+          "properties": {
+            "type": { "enum": ["sequence", "parallel"] },
+            "children": { "type": "array", "minItems": 1, "maxItems": 16, "items": { "$ref": "#/$defs/effect" } }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["type", "seconds", "child"],
+          "properties": {
+            "type": { "const": "delay" }, "seconds": { "type": "number", "exclusiveMinimum": 0 },
+            "child": { "$ref": "#/$defs/effect" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["type", "then"],
+          "properties": {
+            "type": { "const": "if_targets" }, "then": { "$ref": "#/$defs/effect" },
+            "otherwise": { "$ref": "#/$defs/effect" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["type"], "properties": { "type": { "const": "select_self" } }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["type", "range", "frontDot"],
+          "properties": {
+            "type": { "enum": ["query_melee", "query_cone"] },
+            "range": { "type": "number", "exclusiveMinimum": 0 },
+            "frontDot": { "type": "number", "minimum": -1, "maximum": 1 }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["type", "center", "radius"],
+          "properties": {
+            "type": { "const": "query_circle" }, "center": { "enum": ["source", "aim"] },
+            "radius": { "type": "number", "exclusiveMinimum": 0 }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["type", "length", "width"],
+          "properties": {
+            "type": { "const": "query_line" },
+            "length": { "type": "number", "exclusiveMinimum": 0 },
+            "width": { "type": "number", "exclusiveMinimum": 0 }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["type", "range", "maxTargets"],
+          "properties": {
+            "type": { "const": "chain_targets" },
+            "range": { "type": "number", "exclusiveMinimum": 0 },
+            "maxTargets": { "type": "integer", "minimum": 1, "maximum": 6 }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["type", "value"],
+          "properties": { "type": { "const": "damage" }, "value": { "$ref": "#/$defs/damageSpec" } }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["type", "value"],
+          "properties": { "type": { "const": "heal" }, "value": { "$ref": "#/$defs/healingValue" } }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["type", "value", "speed", "lifetime", "radius"],
+          "properties": {
+            "type": { "const": "spawn_projectile" }, "value": { "$ref": "#/$defs/damageSpec" },
+            "speed": { "type": "number", "exclusiveMinimum": 0 },
+            "lifetime": { "type": "number", "exclusiveMinimum": 0 },
+            "radius": { "type": "number", "exclusiveMinimum": 0 }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["type", "status", "stacks"],
+          "properties": {
+            "type": { "const": "apply_status" }, "status": { "$ref": "#/$defs/id" },
+            "stacks": { "type": "integer", "minimum": 1, "maximum": 16 },
+            "durationAdd": { "type": "number", "minimum": 0, "maximum": 12 },
+            "periodicMagnitude": { "type": "number", "minimum": 0 }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["type", "status"],
+          "properties": { "type": { "const": "remove_status" }, "status": { "$ref": "#/$defs/id" } }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["type", "distance"],
+          "properties": {
+            "type": { "enum": ["knockback", "teleport_forward"] },
+            "distance": { "type": "number", "exclusiveMinimum": 0 }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["type", "actor", "count", "radius"],
+          "properties": {
+            "type": { "const": "summon_actor" }, "actor": { "$ref": "#/$defs/id" },
+            "count": { "type": "integer", "minimum": 1, "maximum": 8 },
+            "radius": { "type": "number", "exclusiveMinimum": 0 }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["type", "radius", "duration", "interval", "visual", "child"],
+          "properties": {
+            "type": { "const": "spawn_hazard" },
+            "radius": { "type": "number", "exclusiveMinimum": 0 },
+            "duration": { "type": "number", "exclusiveMinimum": 0, "maximum": 12 },
+            "interval": { "type": "number", "minimum": 0.25 },
+            "visual": { "$ref": "#/$defs/id" },
+            "relation": { "enum": ["enemy", "ally"] },
+            "child": { "$ref": "#/$defs/effect" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["type", "actor", "duration", "maxOwned"],
+          "properties": {
+            "type": { "const": "spawn_summon" },
+            "actor": { "$ref": "#/$defs/id" },
+            "duration": { "type": "number", "exclusiveMinimum": 0, "maximum": 30 },
+            "maxOwned": { "type": "integer", "minimum": 1, "maximum": 2 }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["type", "count", "interval", "child"],
+          "properties": {
+            "type": { "const": "repeat" },
+            "count": { "type": "integer", "minimum": 1, "maximum": 5 },
+            "interval": { "type": "number", "exclusiveMinimum": 0 },
+            "child": { "$ref": "#/$defs/effect" }
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["type", "visual"],
+          "properties": { "type": { "const": "emit_visual" }, "visual": { "$ref": "#/$defs/id" } }
+        }
+      ]
+    },
+    "rankBonus": {
+      "type": "object", "additionalProperties": false, "required": ["rank"],
+      "properties": {
+        "rank": { "enum": [3, 5] },
+        "damageMultiplier": { "type": "number", "exclusiveMinimum": 0 },
+        "radiusAdd": { "type": "number", "minimum": 0 },
+        "durationAdd": { "type": "number", "minimum": 0 },
+        "targetCountAdd": { "type": "integer", "minimum": 0, "maximum": 6 },
+        "charges": { "const": 2 },
+        "applyStatus": { "$ref": "#/$defs/id" },
+        "effect": { "$ref": "#/$defs/effect" }
+      }
+    },
+    "ability": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "name", "slot", "tags", "cooldown", "charges", "action", "actionTime", "telegraphSeconds", "icon", "visual", "effect", "rankBonuses"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" }, "name": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "slot": { "enum": ["melee", "ranged", "active"] },
+        "tags": { "type": "array", "uniqueItems": true, "items": { "enum": ["weapon", "movement", "defense", "area", "summon"] } },
+        "cooldown": { "type": "number", "minimum": 0, "maximum": 60 },
+        "charges": { "type": "integer", "minimum": 1, "maximum": 2 },
+        "action": { "enum": ["melee", "ranged", "skill"] },
+        "actionTime": { "type": "number", "exclusiveMinimum": 0, "maximum": 5 },
+        "telegraphSeconds": { "type": "number", "minimum": 0, "maximum": 5 },
+        "icon": { "$ref": "#/$defs/id" }, "visual": { "$ref": "#/$defs/id" },
+        "timeline": {
+          "type": "object", "additionalProperties": false, "required": ["impactAt"],
+          "properties": { "impactAt": { "type": "number", "minimum": 0, "maximum": 1 } }
+        },
+        "effect": { "$ref": "#/$defs/effect" },
+        "rankBonuses": { "type": "array", "maxItems": 2, "items": { "$ref": "#/$defs/rankBonus" } }
+      }
+    }
+  }
+}

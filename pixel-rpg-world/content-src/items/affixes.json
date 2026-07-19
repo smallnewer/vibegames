@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "affixes": [
+    { "id": "affix.power_melee", "group": "power.melee", "kind": "prefix", "slots": ["melee", "head", "wrists"], "stat": "meleePower", "core": true, "tiers": [{ "minFactor": 0.12, "maxFactor": 0.22 }] },
+    { "id": "affix.power_ranged", "group": "power.ranged", "kind": "prefix", "slots": ["ranged", "head", "wrists"], "stat": "rangedPower", "core": true, "tiers": [{ "minFactor": 0.12, "maxFactor": 0.22 }] },
+    { "id": "affix.power_skill", "group": "power.skill", "kind": "prefix", "slots": ["ranged", "head", "wrists"], "stat": "skillPower", "core": true, "tiers": [{ "minFactor": 0.12, "maxFactor": 0.22 }] },
+    { "id": "affix.attribute_might", "group": "attribute.might", "kind": "prefix", "slots": ["head", "chest", "wrists", "legs", "feet", "melee"], "stat": "might", "core": false, "tiers": [{ "minFactor": 0.08, "maxFactor": 0.15 }] },
+    { "id": "affix.attribute_finesse", "group": "attribute.finesse", "kind": "prefix", "slots": ["head", "chest", "wrists", "legs", "feet", "melee", "ranged"], "stat": "finesse", "core": false, "tiers": [{ "minFactor": 0.08, "maxFactor": 0.15 }] },
+    { "id": "affix.attribute_vitality", "group": "attribute.vitality", "kind": "prefix", "slots": ["head", "chest", "wrists", "legs", "feet"], "stat": "vitality", "core": false, "tiers": [{ "minFactor": 0.08, "maxFactor": 0.15 }] },
+    { "id": "affix.attribute_resolve", "group": "attribute.resolve", "kind": "prefix", "slots": ["head", "chest", "wrists", "legs", "feet", "ranged"], "stat": "resolve", "core": false, "tiers": [{ "minFactor": 0.08, "maxFactor": 0.15 }] },
+    { "id": "affix.defense_health", "group": "defense.health", "kind": "prefix", "slots": ["head", "chest", "wrists", "legs", "feet"], "stat": "maxHealth", "core": true, "tiers": [{ "minFactor": 0.8, "maxFactor": 1.2 }] },
+    { "id": "affix.defense_armor", "group": "defense.armor", "kind": "prefix", "slots": ["head", "chest", "wrists", "legs", "feet"], "stat": "armor", "core": true, "tiers": [{ "minFactor": 0.3, "maxFactor": 0.55 }] },
+    { "id": "affix.resist_fire", "group": "resist.fire", "kind": "suffix", "slots": ["head", "chest", "wrists", "legs", "feet", "melee", "ranged"], "stat": "fireResist", "core": false, "tiers": [{ "minFactor": 0.004, "maxFactor": 0.008 }] },
+    { "id": "affix.resist_ice", "group": "resist.ice", "kind": "suffix", "slots": ["head", "chest", "wrists", "legs", "feet", "melee", "ranged"], "stat": "iceResist", "core": false, "tiers": [{ "minFactor": 0.004, "maxFactor": 0.008 }] },
+    { "id": "affix.resist_poison", "group": "resist.poison", "kind": "suffix", "slots": ["head", "chest", "wrists", "legs", "feet", "melee", "ranged"], "stat": "poisonResist", "core": false, "tiers": [{ "minFactor": 0.004, "maxFactor": 0.008 }] },
+    { "id": "affix.resist_storm", "group": "resist.storm", "kind": "suffix", "slots": ["head", "chest", "wrists", "legs", "feet", "melee", "ranged"], "stat": "stormResist", "core": false, "tiers": [{ "minFactor": 0.004, "maxFactor": 0.008 }] },
+    { "id": "affix.offense_crit", "group": "offense.crit", "kind": "suffix", "slots": ["melee", "ranged", "head", "wrists"], "stat": "critRating", "core": false, "tiers": [{ "minFactor": 0.2, "maxFactor": 0.35 }] },
+    { "id": "affix.offense_crit_damage", "group": "offense.crit_damage", "kind": "suffix", "slots": ["melee", "ranged", "head", "wrists"], "stat": "critDamage", "core": false, "tiers": [{ "minFactor": 0.003, "maxFactor": 0.006 }] },
+    { "id": "affix.offense_attack_speed", "group": "offense.attack_speed", "kind": "suffix", "slots": ["melee", "ranged", "wrists"], "stat": "attackSpeed", "core": false, "tiers": [{ "minFactor": 0.003, "maxFactor": 0.006 }] },
+    { "id": "affix.utility_cooldown_recovery", "group": "utility.cooldown_recovery", "kind": "suffix", "slots": ["ranged", "head", "wrists"], "stat": "cooldownRecovery", "core": false, "tiers": [{ "minFactor": 0.003, "maxFactor": 0.006 }] },
+    { "id": "affix.utility_move_speed", "group": "utility.move_speed", "kind": "suffix", "slots": ["feet"], "stat": "moveSpeed", "core": false, "tiers": [{ "minFactor": 0.003, "maxFactor": 0.006 }] }
+  ]
+}

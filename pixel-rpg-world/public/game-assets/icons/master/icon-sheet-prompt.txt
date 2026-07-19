@@ -1,0 +1,12 @@
+Use case: stylized-concept
+Asset type: complete game UI icon sprite sheet
+Primary request: Create exactly 24 distinct dark-fantasy pixel-art RPG icons in one exact 6-column by 4-row grid, filling a 3:2 landscape canvas. Every grid cell is square and equal size. No cell may be missing, merged, duplicated, or split.
+Scene/backdrop: every cell has the same perfectly flat solid #ff00ff chroma-key background, including all gutters and outer edges. No gradient, texture, shadow, frame, panel, or grid line in the background. Do not use #ff00ff inside any icon.
+Style/medium: crisp hand-painted 32-bit pixel art for a dark action RPG; chunky readable silhouettes; restrained Diablo-like iron, leather, ember, frost, poison, and gold palette; consistent top-left lighting; consistent scale; no photorealism.
+Composition/framing: one centered object in every cell with 18% clear padding on every side. Keep every object fully inside its own cell. No overlaps across cell boundaries.
+Subjects in exact reading order, left-to-right then top-to-bottom:
+Row 1: short iron sword; long rusted two-handed blade; single-blade frontier axe; curved hunting bow; compact crossbow; floating rune focus crystal.
+Row 2: hornless iron helmet; worn leather chest armor; paired leather-and-iron bracers; armored leg greaves; rugged adventurer boots; cracked mysterious rune stone for unknown item.
+Row 3: radial ember explosion; swift wind dash swoosh; battle-focus flame banner; round molten guard shield; sharp elemental projectile lance; binding control rune with crossed arcs.
+Row 4: poison pressure trap; small warding totem; pile of metal equipment scraps; glowing faceted essence crystal; round golden forge seal; passive mastery spiral emblem.
+Constraints: exactly 24 icons and exactly the requested order; square cells; crisp hard pixel edges; no antialias blur; no labels, letters, numbers, UI borders, logos, trademarks, or watermark; no cast shadows; no floor plane; no extra objects; no icon touches a cell edge.

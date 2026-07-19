@@ -1,0 +1,24 @@
+.game-icon {
+  position: relative;
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 32px;
+  aspect-ratio: 1;
+  background-image: var(--game-icon-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  image-rendering: pixelated;
+}
+
+.game-icon[data-tinted="true"]::after {
+  position: absolute;
+  inset: 0;
+  background: var(--game-icon-tint);
+  content: "";
+  opacity: .2;
+  mix-blend-mode: color;
+  -webkit-mask: var(--game-icon-image) center / contain no-repeat;
+  mask: var(--game-icon-image) center / contain no-repeat;
+  pointer-events: none;
+}

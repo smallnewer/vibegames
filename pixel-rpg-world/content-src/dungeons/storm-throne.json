@@ -1,0 +1,451 @@
+{
+  "schemaVersion": 1,
+  "id": "dungeon.storm_throne",
+  "name": "风暴王台",
+  "lore": {
+    "region": "天穹界炉",
+    "summary": "塔底营房、避雷廊和演武台围绕雷冠王座盘旋，困住王城最后一场风暴。",
+    "boss": {
+      "name": "凯洛",
+      "title": "守雷摄政王",
+      "background": "他把雷暴锁进塔内等待失踪的国王归来，三百年后仍拒绝承认王朝已经结束。"
+    }
+  },
+  "manifest": {
+    "themeId": "theme.storm_throne",
+    "resource": {
+      "id": "storm_crown",
+      "name": "雷冠残片"
+    }
+  },
+  "map": {
+    "mode": "production",
+    "screenWidth": 18,
+    "screenDepth": 12,
+    "bounds": {
+      "minX": -9,
+      "maxX": 81,
+      "minZ": -6,
+      "maxZ": 30
+    },
+    "sections": [
+      {
+        "id": "section.storm_entry",
+        "zone": "zone.storm_gate",
+        "name": "断云门台",
+        "preset": "entry_hall",
+        "gridX": 0,
+        "gridZ": 1,
+        "rotation": 0
+      },
+      {
+        "id": "section.storm_living",
+        "zone": "zone.storm_barracks",
+        "name": "守雷营房",
+        "preset": "living_quarters",
+        "gridX": 1,
+        "gridZ": 0,
+        "rotation": 0
+      },
+      {
+        "id": "section.storm_corridor",
+        "zone": "zone.storm_west_bridge",
+        "name": "西避雷桥",
+        "preset": "stone_corridor",
+        "gridX": 1,
+        "gridZ": 1,
+        "rotation": 0
+      },
+      {
+        "id": "section.storm_training_a",
+        "zone": "zone.storm_drill_cross",
+        "name": "雷鸣十字演武台",
+        "preset": "training_arena",
+        "gridX": 2,
+        "gridZ": 1,
+        "rotation": 0
+      },
+      {
+        "id": "section.storm_training_b",
+        "zone": "zone.storm_drill_cross",
+        "name": "雷鸣十字演武台",
+        "preset": "training_arena",
+        "gridX": 2,
+        "gridZ": 0,
+        "rotation": 0
+      },
+      {
+        "id": "section.storm_training_c",
+        "zone": "zone.storm_drill_cross",
+        "name": "雷鸣十字演武台",
+        "preset": "training_arena",
+        "gridX": 2,
+        "gridZ": 2,
+        "rotation": 0
+      },
+      {
+        "id": "section.storm_workshop",
+        "zone": "zone.storm_machinery",
+        "name": "风暴机括室",
+        "preset": "workshop",
+        "gridX": 3,
+        "gridZ": 0,
+        "rotation": 0
+      },
+      {
+        "id": "section.storm_east_bridge",
+        "zone": "zone.storm_east_bridge",
+        "name": "东悬链桥",
+        "preset": "stone_corridor",
+        "gridX": 3,
+        "gridZ": 1,
+        "rotation": 0
+      },
+      {
+        "id": "section.storm_boss_a",
+        "zone": "zone.storm_throne",
+        "name": "雷冠王座",
+        "preset": "boss_arena",
+        "gridX": 4,
+        "gridZ": 1,
+        "rotation": 0
+      },
+      {
+        "id": "section.storm_boss_b",
+        "zone": "zone.storm_throne",
+        "name": "雷冠王座",
+        "preset": "boss_arena",
+        "gridX": 4,
+        "gridZ": 2,
+        "rotation": 0
+      }
+    ],
+    "navigation": {
+      "walkable": [
+        {
+          "id": "walkable.storm_entry",
+          "x": 0,
+          "z": 0,
+          "width": 18,
+          "depth": 12
+        },
+        {
+          "id": "walkable.storm_living",
+          "x": 0,
+          "z": 12,
+          "width": 18,
+          "depth": 12
+        },
+        {
+          "id": "walkable.storm_corridor",
+          "x": 18,
+          "z": 12,
+          "width": 18,
+          "depth": 12
+        },
+        {
+          "id": "walkable.storm_training_a",
+          "x": 36,
+          "z": 12,
+          "width": 18,
+          "depth": 12
+        },
+        {
+          "id": "walkable.storm_training_b",
+          "x": 36,
+          "z": 0,
+          "width": 18,
+          "depth": 12
+        },
+        {
+          "id": "walkable.storm_workshop",
+          "x": 54,
+          "z": 0,
+          "width": 18,
+          "depth": 12
+        },
+        {
+          "id": "walkable.storm_boss_a",
+          "x": 72,
+          "z": 0,
+          "width": 18,
+          "depth": 12
+        },
+        {
+          "id": "walkable.storm_boss_b",
+          "x": 72,
+          "z": 12,
+          "width": 18,
+          "depth": 12
+        }
+      ],
+      "blockers": [
+        {
+          "id": "blocker.storm_bed_1",
+          "x": -6.6,
+          "z": 8.1,
+          "width": 2.8,
+          "depth": 1.45,
+          "height": 0.8
+        },
+        {
+          "id": "blocker.storm_bed_2",
+          "x": -6.6,
+          "z": 15.9,
+          "width": 2.8,
+          "depth": 1.45,
+          "height": 0.8
+        },
+        {
+          "id": "blocker.storm_bed_3",
+          "x": 6.6,
+          "z": 8.1,
+          "width": 2.8,
+          "depth": 1.45,
+          "height": 0.8
+        },
+        {
+          "id": "blocker.storm_bed_4",
+          "x": 6.6,
+          "z": 15.9,
+          "width": 2.8,
+          "depth": 1.45,
+          "height": 0.8
+        },
+        {
+          "id": "blocker.storm_furnace_1",
+          "x": 47.3,
+          "z": -3.7,
+          "width": 2.3,
+          "depth": 1.9,
+          "height": 2.2
+        },
+        {
+          "id": "blocker.storm_bench_1",
+          "x": 47.3,
+          "z": 3.6,
+          "width": 3,
+          "depth": 1.45,
+          "height": 1
+        },
+        {
+          "id": "blocker.storm_furnace_2",
+          "x": 60.7,
+          "z": -3.7,
+          "width": 2.3,
+          "depth": 1.9,
+          "height": 2.2
+        },
+        {
+          "id": "blocker.storm_bench_2",
+          "x": 60.7,
+          "z": 3.6,
+          "width": 3,
+          "depth": 1.45,
+          "height": 1
+        }
+      ]
+    }
+  },
+  "spawnPoints": [
+    {
+      "id": "spawn.storm_player_1",
+      "x": -6,
+      "z": 12
+    },
+    {
+      "id": "spawn.storm_player_2",
+      "x": -7,
+      "z": 12
+    },
+    {
+      "id": "spawn.storm_player_3",
+      "x": -6,
+      "z": 13
+    },
+    {
+      "id": "spawn.storm_player_4",
+      "x": -7,
+      "z": 13
+    }
+  ],
+  "enemies": [
+    {
+      "id": "enemy.storm_boss",
+      "kind": "boss.ember_colossus",
+      "encounter": "encounter.storm_boss",
+      "x": 72,
+      "z": 18
+    },
+    {
+      "id": "enemy.storm_guard_1",
+      "kind": "enemy.ember_stalker",
+      "encounter": "encounter.storm_boss",
+      "x": 68,
+      "z": 15
+    },
+    {
+      "id": "enemy.storm_guard_2",
+      "kind": "enemy.ember_stalker",
+      "encounter": "encounter.storm_boss",
+      "x": 68,
+      "z": 21
+    },
+    {
+      "id": "enemy.storm_guard_3",
+      "kind": "enemy.ember_stalker",
+      "encounter": "encounter.storm_boss",
+      "x": 75,
+      "z": 14
+    },
+    {
+      "id": "enemy.storm_guard_4",
+      "kind": "enemy.ember_stalker",
+      "encounter": "encounter.storm_boss",
+      "x": 75,
+      "z": 22
+    }
+  ],
+  "encounters": [
+    {
+      "id": "encounter.storm_boss",
+      "members": [
+        "enemy.storm_boss",
+        "enemy.storm_guard_1",
+        "enemy.storm_guard_2",
+        "enemy.storm_guard_3",
+        "enemy.storm_guard_4"
+      ]
+    }
+  ],
+  "interactions": [
+    {
+      "id": "interaction.storm_resource",
+      "name": "雷冠残片",
+      "kind": "harvest",
+      "trigger": "interact",
+      "x": 18,
+      "z": 0,
+      "radius": 1.5,
+      "reward": {
+        "resource": "storm_crown",
+        "name": "雷冠残片",
+        "amount": 1
+      }
+    },
+    {
+      "id": "interaction.storm_encounter",
+      "name": "风暴王台守卫",
+      "kind": "encounter",
+      "trigger": "enter",
+      "encounter": "encounter.storm_boss",
+      "x": 63.5,
+      "z": 12,
+      "radius": 2.2
+    },
+    {
+      "id": "interaction.storm_door",
+      "name": "风暴王台王庭门",
+      "kind": "door",
+      "trigger": "interact",
+      "x": 64.5,
+      "z": 12,
+      "radius": 1.8
+    },
+    {
+      "id": "interaction.storm_portal",
+      "name": "风暴王台归途",
+      "kind": "portal",
+      "trigger": "interact",
+      "x": 77,
+      "z": 18,
+      "radius": 1.8,
+      "destination": {
+        "x": -6,
+        "z": 12
+      }
+    }
+  ],
+  "visual": {
+    "profile": "voxel_dungeon",
+    "clearColor": "#0d1028",
+    "groundColor": "#343a62",
+    "groundSize": 18,
+    "palette": {
+      "stone": {
+        "base": "#555c83",
+        "dark": "#282d4a",
+        "light": "#939bc5"
+      },
+      "rock": {
+        "base": "#323754",
+        "dark": "#171a31",
+        "light": "#60698d"
+      },
+      "metal": {
+        "base": "#686f8a",
+        "dark": "#30364e",
+        "light": "#c7bb86"
+      },
+      "wood": {
+        "base": "#51422f",
+        "dark": "#251e17",
+        "light": "#8e7047"
+      },
+      "rune": {
+        "base": "#665318",
+        "dark": "#302709",
+        "light": "#ffe36a"
+      },
+      "hazard": {
+        "base": "#376dd6",
+        "dark": "#183577",
+        "light": "#9fc5ff"
+      },
+      "light": {
+        "fill": "#bac8ec",
+        "key": "#fff0b8",
+        "accent": "#ffd84f",
+        "fog": "#10152f"
+      }
+    },
+    "enemy": {
+      "stone": "#323754",
+      "bone": "#939bc5",
+      "crystal": "#ffe36a",
+      "emissive": "#9fc5ff",
+      "projectile": "#ffe36a"
+    },
+    "interactions": {
+      "harvest": {
+        "color": "#665318",
+        "emissive": "#ffe36a"
+      },
+      "encounter": {
+        "color": "#376dd6",
+        "emissive": "#9fc5ff"
+      },
+      "doorStone": {
+        "color": "#555c83",
+        "emissive": "#171a31"
+      },
+      "doorGate": {
+        "color": "#686f8a",
+        "emissive": "#30364e"
+      },
+      "portal": {
+        "color": "#665318",
+        "emissive": "#302709"
+      },
+      "portalActive": "#ffe36a"
+    }
+  },
+  "assets": [],
+  "placements": [],
+  "decorations": [],
+  "budgets": {
+    "dynamicLights": 1,
+    "estimatedDrawItems": 256,
+    "estimatedTriangles": 20000
+  }
+}

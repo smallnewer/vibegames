@@ -1,0 +1,578 @@
+{
+  "schemaVersion": 1,
+  "id": "dungeon.production_foundation",
+  "name": "余烬监城",
+  "lore": {
+    "region": "余烬监城",
+    "summary": "旧王国的守炉监城，难民生活区、军械区和审判庭被一道永不解除的军令封锁。",
+    "boss": {
+      "name": "赫恩",
+      "title": "铁誓典狱长",
+      "background": "战败后他把难民和士兵一同锁进堡垒，直到今天仍坚信开门等于叛国。"
+    }
+  },
+  "manifest": {
+    "themeId": "theme.ember_bastion",
+    "resource": {
+      "id": "ember_crystal",
+      "name": "余烬炉心"
+    }
+  },
+  "map": {
+    "mode": "production",
+    "screenWidth": 18,
+    "screenDepth": 12,
+    "bounds": {
+      "minX": -9,
+      "maxX": 81,
+      "minZ": -6,
+      "maxZ": 30
+    },
+    "sections": [
+      {
+        "id": "section.ember_entry",
+        "zone": "zone.ember_gate",
+        "name": "难民关城门",
+        "preset": "entry_hall",
+        "gridX": 0,
+        "gridZ": 1,
+        "rotation": 0
+      },
+      {
+        "id": "section.ember_living",
+        "zone": "zone.ember_refuge",
+        "name": "难民牢区",
+        "preset": "living_quarters",
+        "gridX": 1,
+        "gridZ": 1,
+        "rotation": 0
+      },
+      {
+        "id": "section.ember_corridor",
+        "zone": "zone.ember_armory_gallery",
+        "name": "军械门廊",
+        "preset": "stone_corridor",
+        "gridX": 1,
+        "gridZ": 0,
+        "rotation": 0
+      },
+      {
+        "id": "section.ember_training_a",
+        "zone": "zone.ember_drill_court",
+        "name": "三旗操练庭",
+        "preset": "training_arena",
+        "gridX": 2,
+        "gridZ": 0,
+        "rotation": 0
+      },
+      {
+        "id": "section.ember_training_b",
+        "zone": "zone.ember_drill_court",
+        "name": "三旗操练庭",
+        "preset": "training_arena",
+        "gridX": 2,
+        "gridZ": 1,
+        "rotation": 0
+      },
+      {
+        "id": "section.ember_training_c",
+        "zone": "zone.ember_drill_court",
+        "name": "三旗操练庭",
+        "preset": "training_arena",
+        "gridX": 3,
+        "gridZ": 1,
+        "rotation": 0
+      },
+      {
+        "id": "section.ember_workshop",
+        "zone": "zone.ember_forge",
+        "name": "典狱锻炉",
+        "preset": "workshop",
+        "gridX": 3,
+        "gridZ": 0,
+        "rotation": 0
+      },
+      {
+        "id": "section.ember_boss_a",
+        "zone": "zone.ember_judgement",
+        "name": "封城审判庭",
+        "preset": "boss_arena",
+        "gridX": 4,
+        "gridZ": 0,
+        "rotation": 0
+      },
+      {
+        "id": "section.ember_boss_b",
+        "zone": "zone.ember_judgement",
+        "name": "封城审判庭",
+        "preset": "boss_arena",
+        "gridX": 4,
+        "gridZ": 1,
+        "rotation": 0
+      },
+      {
+        "id": "section.ember_prison",
+        "zone": "zone.ember_cells",
+        "name": "弃置牢翼",
+        "preset": "living_quarters",
+        "gridX": 1,
+        "gridZ": 2,
+        "rotation": 0
+      }
+    ],
+    "navigation": {
+      "walkable": [
+        {
+          "id": "walkable.ember_entry",
+          "x": 0,
+          "z": 0,
+          "width": 18,
+          "depth": 12
+        },
+        {
+          "id": "walkable.ember_living",
+          "x": 18,
+          "z": 0,
+          "width": 18,
+          "depth": 12
+        },
+        {
+          "id": "walkable.ember_corridor",
+          "x": 36,
+          "z": 0,
+          "width": 18,
+          "depth": 12
+        },
+        {
+          "id": "walkable.ember_training_a",
+          "x": 36,
+          "z": 12,
+          "width": 18,
+          "depth": 12
+        },
+        {
+          "id": "walkable.ember_training_b",
+          "x": 54,
+          "z": 12,
+          "width": 18,
+          "depth": 12
+        },
+        {
+          "id": "walkable.ember_workshop",
+          "x": 54,
+          "z": 0,
+          "width": 18,
+          "depth": 12
+        },
+        {
+          "id": "walkable.ember_boss_a",
+          "x": 72,
+          "z": 0,
+          "width": 18,
+          "depth": 12
+        },
+        {
+          "id": "walkable.ember_boss_b",
+          "x": 72,
+          "z": 12,
+          "width": 18,
+          "depth": 12
+        }
+      ],
+      "blockers": [
+        {
+          "id": "blocker.ember_bed_1",
+          "x": 11.4,
+          "z": -3.9,
+          "width": 2.8,
+          "depth": 1.45,
+          "height": 0.8
+        },
+        {
+          "id": "blocker.ember_bed_2",
+          "x": 11.4,
+          "z": 3.9,
+          "width": 2.8,
+          "depth": 1.45,
+          "height": 0.8
+        },
+        {
+          "id": "blocker.ember_bed_3",
+          "x": 24.6,
+          "z": -3.9,
+          "width": 2.8,
+          "depth": 1.45,
+          "height": 0.8
+        },
+        {
+          "id": "blocker.ember_bed_4",
+          "x": 24.6,
+          "z": 3.9,
+          "width": 2.8,
+          "depth": 1.45,
+          "height": 0.8
+        },
+        {
+          "id": "blocker.ember_furnace_1",
+          "x": 47.3,
+          "z": -3.7,
+          "width": 2.3,
+          "depth": 1.9,
+          "height": 2.2
+        },
+        {
+          "id": "blocker.ember_bench_1",
+          "x": 47.3,
+          "z": 3.6,
+          "width": 3,
+          "depth": 1.45,
+          "height": 1
+        },
+        {
+          "id": "blocker.ember_furnace_2",
+          "x": 60.7,
+          "z": -3.7,
+          "width": 2.3,
+          "depth": 1.9,
+          "height": 2.2
+        },
+        {
+          "id": "blocker.ember_bench_2",
+          "x": 60.7,
+          "z": 3.6,
+          "width": 3,
+          "depth": 1.45,
+          "height": 1
+        }
+      ]
+    }
+  },
+  "run": {
+    "gameplayVersion": 1,
+    "levelBand": {
+      "normal": [1, 4],
+      "echo": [16, 20]
+    },
+    "entrySection": "section.ember_entry",
+    "bossEncounter": "encounter.warden_hearn",
+    "completionPortal": "interaction.ember_portal",
+    "firstClearUnlock": "dungeon.frost_mine"
+  },
+  "spawnPoints": [
+    {
+      "id": "spawn.ember_player_1",
+      "x": -6,
+      "z": 12
+    },
+    {
+      "id": "spawn.ember_player_2",
+      "x": -7,
+      "z": 12
+    },
+    {
+      "id": "spawn.ember_player_3",
+      "x": -6,
+      "z": 13
+    },
+    {
+      "id": "spawn.ember_player_4",
+      "x": -7,
+      "z": 13
+    }
+  ],
+  "encounterSpawns": [
+    { "id": "spawn.refuge_1", "x": 14, "z": 10 },
+    { "id": "spawn.refuge_2", "x": 18, "z": 10 },
+    { "id": "spawn.refuge_3", "x": 22, "z": 10 },
+    { "id": "spawn.refuge_4", "x": 18, "z": 15 },
+    { "id": "spawn.armory_1", "x": 12, "z": -3 },
+    { "id": "spawn.armory_2", "x": 18, "z": -3 },
+    { "id": "spawn.armory_3", "x": 24, "z": -3 },
+    { "id": "spawn.armory_4", "x": 14, "z": 3 },
+    { "id": "spawn.armory_5", "x": 20, "z": 3 },
+    { "id": "spawn.armory_6", "x": 25, "z": 3 },
+    { "id": "spawn.forge_1", "x": 47, "z": -3 },
+    { "id": "spawn.forge_2", "x": 52, "z": -3 },
+    { "id": "spawn.forge_3", "x": 58, "z": -3 },
+    { "id": "spawn.forge_4", "x": 61, "z": 0 },
+    { "id": "spawn.forge_5", "x": 48, "z": 3 },
+    { "id": "spawn.forge_6", "x": 54, "z": 3 },
+    { "id": "spawn.forge_7", "x": 60, "z": 3 },
+    { "id": "spawn.champion_1", "x": 50, "z": 10 },
+    { "id": "spawn.champion_2", "x": 54, "z": 10 },
+    { "id": "spawn.champion_3", "x": 58, "z": 10 },
+    { "id": "spawn.champion_4", "x": 54, "z": 15 },
+    { "id": "spawn.warden_hearn", "x": 72, "z": 0 }
+  ],
+  "enemies": [],
+  "encounters": [
+    {
+      "id": "encounter.refuge_gate",
+      "kind": "normal",
+      "trigger": { "section": "section.ember_living", "x": 11, "z": 12, "radius": 2.2 },
+      "lockInteractions": ["interaction.door_refuge"],
+      "rewardTable": "loot.encounter.ember",
+      "waves": [
+        {
+          "delay": 0,
+          "members": [
+            { "id": "member.refuge_gaoler_1", "actor": "enemy.ember_gaoler", "spawn": "spawn.refuge_1", "levelOffset": 0 },
+            { "id": "member.refuge_gaoler_2", "actor": "enemy.ember_gaoler", "spawn": "spawn.refuge_2", "levelOffset": 0 },
+            { "id": "member.refuge_gaoler_3", "actor": "enemy.ember_gaoler", "spawn": "spawn.refuge_3", "levelOffset": 0 },
+            { "id": "member.refuge_gaoler_4", "actor": "enemy.ember_gaoler", "spawn": "spawn.refuge_4", "levelOffset": 0 }
+          ]
+        },
+        {
+          "delay": 1.25,
+          "members": [
+            { "id": "member.refuge_gaoler_5", "actor": "enemy.ember_gaoler", "spawn": "spawn.refuge_1", "levelOffset": 0 },
+            { "id": "member.refuge_gaoler_6", "actor": "enemy.ember_gaoler", "spawn": "spawn.refuge_2", "levelOffset": 0 },
+            { "id": "member.refuge_slinger_1", "actor": "enemy.furnace_slinger", "spawn": "spawn.refuge_3", "levelOffset": 0 },
+            { "id": "member.refuge_slinger_2", "actor": "enemy.furnace_slinger", "spawn": "spawn.refuge_4", "levelOffset": 0 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "encounter.armory_crossing",
+      "kind": "normal",
+      "trigger": { "section": "section.ember_corridor", "x": 12, "z": 0, "radius": 2.2 },
+      "lockInteractions": ["interaction.door_armory"],
+      "rewardTable": "loot.encounter.ember",
+      "waves": [
+        {
+          "delay": 0,
+          "members": [
+            { "id": "member.armory_slinger_1", "actor": "enemy.furnace_slinger", "spawn": "spawn.armory_1", "levelOffset": 0 },
+            { "id": "member.armory_slinger_2", "actor": "enemy.furnace_slinger", "spawn": "spawn.armory_2", "levelOffset": 0 },
+            { "id": "member.armory_slinger_3", "actor": "enemy.furnace_slinger", "spawn": "spawn.armory_3", "levelOffset": 0 },
+            { "id": "member.armory_gaoler_1", "actor": "enemy.ember_gaoler", "spawn": "spawn.armory_4", "levelOffset": 0 },
+            { "id": "member.armory_gaoler_2", "actor": "enemy.ember_gaoler", "spawn": "spawn.armory_5", "levelOffset": 0 },
+            { "id": "member.armory_gaoler_3", "actor": "enemy.ember_gaoler", "spawn": "spawn.armory_6", "levelOffset": 0 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "encounter.forge_floor",
+      "kind": "normal",
+      "trigger": { "section": "section.ember_workshop", "x": 47, "z": 0, "radius": 2.2 },
+      "lockInteractions": ["interaction.door_forge"],
+      "rewardTable": "loot.encounter.ember",
+      "waves": [
+        {
+          "delay": 0,
+          "members": [
+            { "id": "member.forge_gaoler_1", "actor": "enemy.ember_gaoler", "spawn": "spawn.forge_1", "levelOffset": 1 },
+            { "id": "member.forge_gaoler_2", "actor": "enemy.ember_gaoler", "spawn": "spawn.forge_2", "levelOffset": 1 },
+            { "id": "member.forge_gaoler_3", "actor": "enemy.ember_gaoler", "spawn": "spawn.forge_3", "levelOffset": 1 },
+            { "id": "member.forge_gaoler_4", "actor": "enemy.ember_gaoler", "spawn": "spawn.forge_4", "levelOffset": 1 },
+            { "id": "member.forge_slinger_1", "actor": "enemy.furnace_slinger", "spawn": "spawn.forge_5", "levelOffset": 1 },
+            { "id": "member.forge_slinger_2", "actor": "enemy.furnace_slinger", "spawn": "spawn.forge_6", "levelOffset": 1 },
+            { "id": "member.forge_slinger_3", "actor": "enemy.furnace_slinger", "spawn": "spawn.forge_7", "levelOffset": 1 }
+          ]
+        },
+        {
+          "delay": 1.5,
+          "members": [
+            { "id": "member.forge_gaoler_5", "actor": "enemy.ember_gaoler", "spawn": "spawn.forge_1", "levelOffset": 1 },
+            { "id": "member.forge_gaoler_6", "actor": "enemy.ember_gaoler", "spawn": "spawn.forge_2", "levelOffset": 1 },
+            { "id": "member.forge_slinger_4", "actor": "enemy.furnace_slinger", "spawn": "spawn.forge_5", "levelOffset": 1 },
+            { "id": "member.forge_slinger_5", "actor": "enemy.furnace_slinger", "spawn": "spawn.forge_6", "levelOffset": 1 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "encounter.ember_champion",
+      "kind": "elite",
+      "trigger": { "section": "section.ember_training_c", "x": 47, "z": 12, "radius": 2.2 },
+      "lockInteractions": ["interaction.door_elite"],
+      "rewardTable": "loot.elite.ember_prison",
+      "waves": [
+        {
+          "delay": 0,
+          "members": [
+            { "id": "member.champion", "actor": "elite.ember_champion", "spawn": "spawn.champion_1", "levelOffset": 1, "eliteAffix": "elite.molten_ground" },
+            { "id": "member.champion_gaoler_1", "actor": "enemy.ember_gaoler", "spawn": "spawn.champion_2", "levelOffset": 1 },
+            { "id": "member.champion_gaoler_2", "actor": "enemy.ember_gaoler", "spawn": "spawn.champion_3", "levelOffset": 1 },
+            { "id": "member.champion_gaoler_3", "actor": "enemy.ember_gaoler", "spawn": "spawn.champion_4", "levelOffset": 1 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "encounter.warden_hearn",
+      "kind": "boss",
+      "trigger": { "section": "section.ember_boss_a", "x": 65, "z": 0, "radius": 2.2 },
+      "lockInteractions": ["interaction.door_boss"],
+      "rewardTable": "loot.boss.ember_prison",
+      "checkpoint": "checkpoint.warden_hearn",
+      "bossPhases": ["phase.iron_oath", "phase.burning_edict", "phase.last_lock"],
+      "waves": [
+        {
+          "delay": 0,
+          "members": [
+            { "id": "member.warden_hearn", "actor": "boss.warden_hearn", "spawn": "spawn.warden_hearn", "levelOffset": 2 }
+          ]
+        }
+      ]
+    }
+  ],
+  "interactions": [
+    {
+      "id": "interaction.ember_resource",
+      "name": "余烬炉心",
+      "kind": "harvest",
+      "trigger": "interact",
+      "x": 18,
+      "z": 12,
+      "radius": 1.5,
+      "reward": {
+        "resource": "ember_crystal",
+        "name": "余烬炉心",
+        "amount": 1
+      }
+    },
+    {
+      "id": "interaction.door_refuge",
+      "name": "难民牢区闸门",
+      "kind": "door",
+      "trigger": "interact",
+      "x": 27,
+      "z": 12,
+      "radius": 1.8
+    },
+    {
+      "id": "interaction.door_armory",
+      "name": "军械门廊铁门",
+      "kind": "door",
+      "trigger": "interact",
+      "x": 27,
+      "z": 0,
+      "radius": 1.8
+    },
+    {
+      "id": "interaction.door_forge",
+      "name": "典狱锻炉铁门",
+      "kind": "door",
+      "trigger": "interact",
+      "x": 45,
+      "z": 0,
+      "radius": 1.8
+    },
+    {
+      "id": "interaction.door_elite",
+      "name": "冠军操练庭闸门",
+      "kind": "door",
+      "trigger": "interact",
+      "x": 63,
+      "z": 12,
+      "radius": 1.8
+    },
+    {
+      "id": "interaction.door_boss",
+      "name": "封城审判庭王门",
+      "kind": "door",
+      "trigger": "interact",
+      "x": 63,
+      "z": 0,
+      "radius": 1.8
+    },
+    {
+      "id": "interaction.ember_portal",
+      "name": "余烬监城归途",
+      "kind": "portal",
+      "trigger": "interact",
+      "x": 77,
+      "z": 6,
+      "radius": 1.8,
+      "destination": {
+        "x": -6,
+        "z": 12
+      }
+    }
+  ],
+  "visual": {
+    "profile": "voxel_dungeon",
+    "clearColor": "#160b0d",
+    "groundColor": "#443035",
+    "groundSize": 18,
+    "palette": {
+      "stone": {
+        "base": "#654b50",
+        "dark": "#302226",
+        "light": "#a77c76"
+      },
+      "rock": {
+        "base": "#3b3034",
+        "dark": "#1d171a",
+        "light": "#70565c"
+      },
+      "metal": {
+        "base": "#625a5d",
+        "dark": "#2d292c",
+        "light": "#b89472"
+      },
+      "wood": {
+        "base": "#6d3d2e",
+        "dark": "#321b16",
+        "light": "#b96a43"
+      },
+      "rune": {
+        "base": "#522017",
+        "dark": "#260d0a",
+        "light": "#ff9a3c"
+      },
+      "hazard": {
+        "base": "#f34a12",
+        "dark": "#8f170a",
+        "light": "#ffd85a"
+      },
+      "light": {
+        "fill": "#b3b8c9",
+        "key": "#ffe0b8",
+        "accent": "#ff6a28",
+        "fog": "#19090b"
+      }
+    },
+    "enemy": {
+      "stone": "#3b3034",
+      "bone": "#a77c76",
+      "crystal": "#ff9a3c",
+      "emissive": "#ffd85a",
+      "projectile": "#ff9a3c"
+    },
+    "interactions": {
+      "harvest": {
+        "color": "#522017",
+        "emissive": "#ff9a3c"
+      },
+      "encounter": {
+        "color": "#f34a12",
+        "emissive": "#ffd85a"
+      },
+      "doorStone": {
+        "color": "#654b50",
+        "emissive": "#1d171a"
+      },
+      "doorGate": {
+        "color": "#625a5d",
+        "emissive": "#2d292c"
+      },
+      "portal": {
+        "color": "#522017",
+        "emissive": "#260d0a"
+      },
+      "portalActive": "#ff9a3c"
+    }
+  },
+  "assets": [],
+  "placements": [],
+  "decorations": [],
+  "budgets": {
+    "dynamicLights": 1,
+    "estimatedDrawItems": 256,
+    "estimatedTriangles": 20000
+  }
+}

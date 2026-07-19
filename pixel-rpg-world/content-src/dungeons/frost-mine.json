@@ -1,0 +1,451 @@
+{
+  "schemaVersion": 1,
+  "id": "dungeon.frost_mine",
+  "name": "霜钟矿井",
+  "lore": {
+    "region": "北境界炉",
+    "summary": "永冻矿井里仍保留着矿工宿舍、冰轨与升降钟，所有出口都被最后一任矿监封死。",
+    "boss": {
+      "name": "伊萨",
+      "title": "盲眼矿监",
+      "background": "他用永冻封住矿难亡魂，也封住了幸存者；每次钟响，他都以为救援队终于抵达。"
+    }
+  },
+  "manifest": {
+    "themeId": "theme.frost_mine",
+    "resource": {
+      "id": "frost_bell_shard",
+      "name": "霜钟碎片"
+    }
+  },
+  "map": {
+    "mode": "production",
+    "screenWidth": 18,
+    "screenDepth": 12,
+    "bounds": {
+      "minX": -9,
+      "maxX": 63,
+      "minZ": -6,
+      "maxZ": 42
+    },
+    "sections": [
+      {
+        "id": "section.frost_entry",
+        "zone": "zone.frost_mouth",
+        "name": "封霜矿口",
+        "preset": "entry_hall",
+        "gridX": 0,
+        "gridZ": 1,
+        "rotation": 0
+      },
+      {
+        "id": "section.frost_living",
+        "zone": "zone.frost_bunks",
+        "name": "矿工棚屋",
+        "preset": "living_quarters",
+        "gridX": 1,
+        "gridZ": 0,
+        "rotation": 0
+      },
+      {
+        "id": "section.frost_corridor",
+        "zone": "zone.frost_junction",
+        "name": "轨道交汇井",
+        "preset": "stone_corridor",
+        "gridX": 1,
+        "gridZ": 1,
+        "rotation": 0
+      },
+      {
+        "id": "section.frost_workshop",
+        "zone": "zone.frost_liftworks",
+        "name": "升降机房",
+        "preset": "workshop",
+        "gridX": 2,
+        "gridZ": 0,
+        "rotation": 0
+      },
+      {
+        "id": "section.frost_training_a",
+        "zone": "zone.frost_quarry",
+        "name": "回声采掘大厅",
+        "preset": "training_arena",
+        "gridX": 2,
+        "gridZ": 1,
+        "rotation": 0
+      },
+      {
+        "id": "section.frost_training_b",
+        "zone": "zone.frost_quarry",
+        "name": "回声采掘大厅",
+        "preset": "training_arena",
+        "gridX": 2,
+        "gridZ": 2,
+        "rotation": 0
+      },
+      {
+        "id": "section.frost_training_c",
+        "zone": "zone.frost_quarry",
+        "name": "回声采掘大厅",
+        "preset": "training_arena",
+        "gridX": 1,
+        "gridZ": 2,
+        "rotation": 0
+      },
+      {
+        "id": "section.frost_collapse",
+        "zone": "zone.frost_collapse",
+        "name": "塌方支井",
+        "preset": "stone_corridor",
+        "gridX": 0,
+        "gridZ": 2,
+        "rotation": 0
+      },
+      {
+        "id": "section.frost_boss_a",
+        "zone": "zone.frost_bell_pit",
+        "name": "霜钟井底",
+        "preset": "boss_arena",
+        "gridX": 2,
+        "gridZ": 3,
+        "rotation": 0
+      },
+      {
+        "id": "section.frost_boss_b",
+        "zone": "zone.frost_bell_pit",
+        "name": "霜钟井底",
+        "preset": "boss_arena",
+        "gridX": 3,
+        "gridZ": 3,
+        "rotation": 0
+      }
+    ],
+    "navigation": {
+      "walkable": [
+        {
+          "id": "walkable.frost_entry",
+          "x": 0,
+          "z": 12,
+          "width": 18,
+          "depth": 12
+        },
+        {
+          "id": "walkable.frost_living",
+          "x": 0,
+          "z": 0,
+          "width": 18,
+          "depth": 12
+        },
+        {
+          "id": "walkable.frost_corridor",
+          "x": 18,
+          "z": 0,
+          "width": 18,
+          "depth": 12
+        },
+        {
+          "id": "walkable.frost_workshop",
+          "x": 18,
+          "z": 12,
+          "width": 18,
+          "depth": 12
+        },
+        {
+          "id": "walkable.frost_training_a",
+          "x": 36,
+          "z": 0,
+          "width": 18,
+          "depth": 12
+        },
+        {
+          "id": "walkable.frost_training_b",
+          "x": 36,
+          "z": 12,
+          "width": 18,
+          "depth": 12
+        },
+        {
+          "id": "walkable.frost_boss_a",
+          "x": 54,
+          "z": 12,
+          "width": 18,
+          "depth": 12
+        },
+        {
+          "id": "walkable.frost_boss_b",
+          "x": 72,
+          "z": 12,
+          "width": 18,
+          "depth": 12
+        }
+      ],
+      "blockers": [
+        {
+          "id": "blocker.frost_bed_1",
+          "x": -6.6,
+          "z": -3.9,
+          "width": 2.8,
+          "depth": 1.45,
+          "height": 0.8
+        },
+        {
+          "id": "blocker.frost_bed_2",
+          "x": -6.6,
+          "z": 3.9,
+          "width": 2.8,
+          "depth": 1.45,
+          "height": 0.8
+        },
+        {
+          "id": "blocker.frost_bed_3",
+          "x": 6.6,
+          "z": -3.9,
+          "width": 2.8,
+          "depth": 1.45,
+          "height": 0.8
+        },
+        {
+          "id": "blocker.frost_bed_4",
+          "x": 6.6,
+          "z": 3.9,
+          "width": 2.8,
+          "depth": 1.45,
+          "height": 0.8
+        },
+        {
+          "id": "blocker.frost_furnace_1",
+          "x": 11.3,
+          "z": 8.3,
+          "width": 2.3,
+          "depth": 1.9,
+          "height": 2.2
+        },
+        {
+          "id": "blocker.frost_bench_1",
+          "x": 11.3,
+          "z": 15.6,
+          "width": 3,
+          "depth": 1.45,
+          "height": 1
+        },
+        {
+          "id": "blocker.frost_furnace_2",
+          "x": 24.7,
+          "z": 8.3,
+          "width": 2.3,
+          "depth": 1.9,
+          "height": 2.2
+        },
+        {
+          "id": "blocker.frost_bench_2",
+          "x": 24.7,
+          "z": 15.6,
+          "width": 3,
+          "depth": 1.45,
+          "height": 1
+        }
+      ]
+    }
+  },
+  "spawnPoints": [
+    {
+      "id": "spawn.frost_player_1",
+      "x": -6,
+      "z": 12
+    },
+    {
+      "id": "spawn.frost_player_2",
+      "x": -7,
+      "z": 12
+    },
+    {
+      "id": "spawn.frost_player_3",
+      "x": -6,
+      "z": 13
+    },
+    {
+      "id": "spawn.frost_player_4",
+      "x": -7,
+      "z": 13
+    }
+  ],
+  "enemies": [
+    {
+      "id": "enemy.frost_boss",
+      "kind": "boss.ember_colossus",
+      "encounter": "encounter.frost_boss",
+      "x": 45,
+      "z": 36
+    },
+    {
+      "id": "enemy.frost_guard_1",
+      "kind": "enemy.ember_stalker",
+      "encounter": "encounter.frost_boss",
+      "x": 41,
+      "z": 33
+    },
+    {
+      "id": "enemy.frost_guard_2",
+      "kind": "enemy.ember_stalker",
+      "encounter": "encounter.frost_boss",
+      "x": 41,
+      "z": 39
+    },
+    {
+      "id": "enemy.frost_guard_3",
+      "kind": "enemy.ember_stalker",
+      "encounter": "encounter.frost_boss",
+      "x": 48,
+      "z": 32
+    },
+    {
+      "id": "enemy.frost_guard_4",
+      "kind": "enemy.ember_stalker",
+      "encounter": "encounter.frost_boss",
+      "x": 48,
+      "z": 40
+    }
+  ],
+  "encounters": [
+    {
+      "id": "encounter.frost_boss",
+      "members": [
+        "enemy.frost_boss",
+        "enemy.frost_guard_1",
+        "enemy.frost_guard_2",
+        "enemy.frost_guard_3",
+        "enemy.frost_guard_4"
+      ]
+    }
+  ],
+  "interactions": [
+    {
+      "id": "interaction.frost_resource",
+      "name": "霜钟碎片",
+      "kind": "harvest",
+      "trigger": "interact",
+      "x": 18,
+      "z": 0,
+      "radius": 1.5,
+      "reward": {
+        "resource": "frost_bell_shard",
+        "name": "霜钟碎片",
+        "amount": 1
+      }
+    },
+    {
+      "id": "interaction.frost_encounter",
+      "name": "霜钟矿井守卫",
+      "kind": "encounter",
+      "trigger": "enter",
+      "encounter": "encounter.frost_boss",
+      "x": 36,
+      "z": 29,
+      "radius": 2.2
+    },
+    {
+      "id": "interaction.frost_door",
+      "name": "霜钟矿井王庭门",
+      "kind": "door",
+      "trigger": "interact",
+      "x": 36,
+      "z": 30,
+      "radius": 1.8
+    },
+    {
+      "id": "interaction.frost_portal",
+      "name": "霜钟矿井归途",
+      "kind": "portal",
+      "trigger": "interact",
+      "x": 58,
+      "z": 36,
+      "radius": 1.8,
+      "destination": {
+        "x": -6,
+        "z": 12
+      }
+    }
+  ],
+  "visual": {
+    "profile": "voxel_dungeon",
+    "clearColor": "#0c1824",
+    "groundColor": "#354b59",
+    "groundSize": 18,
+    "palette": {
+      "stone": {
+        "base": "#55717e",
+        "dark": "#263944",
+        "light": "#9dc4cf"
+      },
+      "rock": {
+        "base": "#324957",
+        "dark": "#162630",
+        "light": "#638494"
+      },
+      "metal": {
+        "base": "#627987",
+        "dark": "#2c3c48",
+        "light": "#b7d3dc"
+      },
+      "wood": {
+        "base": "#59473c",
+        "dark": "#2a211d",
+        "light": "#92745e"
+      },
+      "rune": {
+        "base": "#244f70",
+        "dark": "#10283b",
+        "light": "#78e4ff"
+      },
+      "hazard": {
+        "base": "#47b9dc",
+        "dark": "#1e6487",
+        "light": "#d5fbff"
+      },
+      "light": {
+        "fill": "#b9d8e6",
+        "key": "#e7fbff",
+        "accent": "#68dcff",
+        "fog": "#0c1c29"
+      }
+    },
+    "enemy": {
+      "stone": "#324957",
+      "bone": "#9dc4cf",
+      "crystal": "#78e4ff",
+      "emissive": "#d5fbff",
+      "projectile": "#78e4ff"
+    },
+    "interactions": {
+      "harvest": {
+        "color": "#244f70",
+        "emissive": "#78e4ff"
+      },
+      "encounter": {
+        "color": "#47b9dc",
+        "emissive": "#d5fbff"
+      },
+      "doorStone": {
+        "color": "#55717e",
+        "emissive": "#162630"
+      },
+      "doorGate": {
+        "color": "#627987",
+        "emissive": "#2c3c48"
+      },
+      "portal": {
+        "color": "#244f70",
+        "emissive": "#10283b"
+      },
+      "portalActive": "#78e4ff"
+    }
+  },
+  "assets": [],
+  "placements": [],
+  "decorations": [],
+  "budgets": {
+    "dynamicLights": 1,
+    "estimatedDrawItems": 256,
+    "estimatedTriangles": 20000
+  }
+}

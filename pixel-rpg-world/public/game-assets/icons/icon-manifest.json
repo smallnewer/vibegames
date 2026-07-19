@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "fallback": "icon.generic.unknown",
+  "sheet": {
+    "columns": 6,
+    "rows": 4,
+    "background": "#ff00ff",
+    "source": "master/icon-sheet-source.png",
+    "prompt": "master/icon-sheet-prompt.txt",
+    "contactSheet": "master/icon-contact-sheet.png"
+  },
+  "entries": [
+    { "id": "icon.weapon.sword", "label": "短剑", "path": "master/weapon-sword.png", "tintable": false },
+    { "id": "icon.weapon.longblade", "label": "长刃", "path": "master/weapon-longblade.png", "tintable": false },
+    { "id": "icon.weapon.axe", "label": "战斧", "path": "master/weapon-axe.png", "tintable": false },
+    { "id": "icon.weapon.bow", "label": "猎弓", "path": "master/weapon-bow.png", "tintable": false },
+    { "id": "icon.weapon.crossbow", "label": "弩", "path": "master/weapon-crossbow.png", "tintable": false },
+    { "id": "icon.weapon.focus", "label": "法器", "path": "master/weapon-focus.png", "tintable": false },
+
+    { "id": "icon.armor.head", "label": "头部", "path": "master/armor-head.png", "tintable": false },
+    { "id": "icon.armor.chest", "label": "胸甲", "path": "master/armor-chest.png", "tintable": false },
+    { "id": "icon.armor.wrists", "label": "护腕", "path": "master/armor-wrists.png", "tintable": false },
+    { "id": "icon.armor.legs", "label": "腿甲", "path": "master/armor-legs.png", "tintable": false },
+    { "id": "icon.armor.feet", "label": "靴子", "path": "master/armor-feet.png", "tintable": false },
+    { "id": "icon.generic.unknown", "label": "未知", "path": "master/generic-unknown.png", "tintable": true },
+
+    { "id": "icon.skill.burst", "label": "爆发", "path": "master/skill-burst.png", "tintable": true },
+    { "id": "icon.skill.movement", "label": "位移", "path": "master/skill-movement.png", "tintable": true },
+    { "id": "icon.skill.buff", "label": "增益", "path": "master/skill-buff.png", "tintable": true },
+    { "id": "icon.skill.shield", "label": "护盾", "path": "master/skill-shield.png", "tintable": true },
+    { "id": "icon.skill.projectile", "label": "投射物", "path": "master/skill-projectile.png", "tintable": true },
+    { "id": "icon.skill.control", "label": "控制", "path": "master/skill-control.png", "tintable": true },
+
+    { "id": "icon.skill.trap", "label": "陷阱", "path": "master/skill-trap.png", "tintable": true },
+    { "id": "icon.skill.totem", "label": "图腾", "path": "master/skill-totem.png", "tintable": true },
+    { "id": "icon.material.scrap", "label": "碎片", "path": "master/material-scrap.png", "tintable": false },
+    { "id": "icon.material.essence", "label": "精华", "path": "master/material-essence.png", "tintable": true },
+    { "id": "icon.material.seal", "label": "印记", "path": "master/material-seal.png", "tintable": false },
+    { "id": "icon.generic.passive", "label": "被动", "path": "master/generic-passive.png", "tintable": true }
+  ],
+  "contentTints": {
+    "ability.ember_nova": "#ff6b35",
+    "ability.shadow_step": "#bd83ff",
+    "ability.battle_focus": "#f0b44e",
+    "ability.molten_guard": "#ff7b43",
+    "ability.frost_lance": "#79d7ff",
+    "ability.ice_ring": "#9cecff",
+    "ability.storm_chain": "#b7a2ff",
+    "ability.gale_dash": "#a8eee2",
+    "ability.poison_trap": "#8bcf52",
+    "ability.root_snare": "#86b85b",
+    "ability.warding_totem": "#e4c66f",
+    "ability.hunter_volley": "#d5ddc6",
+    "material.ember_essence": "#ed713b",
+    "material.frost_essence": "#74c7ff",
+    "material.tide_essence": "#45b6c9",
+    "material.spore_essence": "#8fca57",
+    "material.storm_essence": "#aa91f4"
+  }
+}

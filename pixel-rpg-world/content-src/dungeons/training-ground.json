@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "id": "dungeon.training_ground",
+  "name": "晶体门训练场",
+  "lore": {
+    "region": "余烬边境",
+    "summary": "守炉军团留下的训练前哨，如今只剩失控的晶体炮台仍在执行操练命令。",
+    "boss": {
+      "name": "零号炮台",
+      "title": "晶体门教官",
+      "background": "没有人记得它训练过多少士兵，它只记得下一轮考核永远不能停。"
+    }
+  },
+  "manifest": {
+    "themeId": "theme.ember_ruins",
+    "resource": { "id": "ember_ore", "name": "余烬矿" }
+  },
+  "map": {
+    "mode": "showcase",
+    "screenWidth": 18,
+    "screenDepth": 12,
+    "bounds": { "minX": -9, "maxX": 9, "minZ": -6, "maxZ": 6 },
+    "sections": [
+      { "id": "section.training", "preset": "foundation_room", "gridX": 0, "gridZ": 0, "rotation": 0 }
+    ],
+    "navigation": {
+      "walkable": [
+        { "id": "walkable.training", "x": 0, "z": 0, "width": 18, "depth": 12 }
+      ],
+      "blockers": [
+        { "id": "blocker.training_pillar_a", "x": -5, "z": -4, "width": 0.8, "depth": 0.8, "height": 2.4 },
+        { "id": "blocker.training_pillar_b", "x": 5, "z": 4, "width": 0.8, "depth": 0.8, "height": 2.4 }
+      ]
+    }
+  },
+  "spawnPoints": [
+    { "id": "spawn.player_1", "x": -3, "z": 0 },
+    { "id": "spawn.player_2", "x": -4, "z": 0 },
+    { "id": "spawn.player_3", "x": -3, "z": 1 },
+    { "id": "spawn.player_4", "x": -4, "z": 1 }
+  ],
+  "enemies": [
+    { "id": "enemy.crystal_turret", "kind": "enemy.crystal_turret", "encounter": "encounter.crystal_gate", "x": 3, "z": 0 }
+  ],
+  "encounters": [
+    { "id": "encounter.crystal_gate", "members": ["enemy.crystal_turret"] }
+  ],
+  "interactions": [
+    {
+      "id": "interaction.ember_ore",
+      "name": "余烬矿",
+      "kind": "harvest",
+      "trigger": "interact",
+      "x": -3,
+      "z": 1,
+      "radius": 1.4,
+      "reward": { "resource": "ember_ore", "name": "余烬矿", "amount": 1 }
+    },
+    {
+      "id": "interaction.crystal_gate_trigger",
+      "name": "晶体守卫遭遇",
+      "kind": "encounter",
+      "trigger": "enter",
+      "encounter": "encounter.crystal_gate",
+      "x": 0,
+      "z": 0,
+      "radius": 0.9
+    },
+    {
+      "id": "interaction.crystal_gate_door",
+      "name": "晶体门",
+      "kind": "door",
+      "trigger": "interact",
+      "x": 2,
+      "z": 0,
+      "radius": 1.4
+    },
+    {
+      "id": "interaction.return_portal",
+      "name": "返程传送门",
+      "kind": "portal",
+      "trigger": "interact",
+      "x": 4,
+      "z": 0,
+      "radius": 1.4,
+      "destination": { "x": -4, "z": -3 }
+    }
+  ],
+  "visual": {
+    "profile": "foundation",
+    "clearColor": "#070508",
+    "groundColor": "#291a14",
+    "groundSize": 12,
+    "enemy": {
+      "stone": "#29252c",
+      "bone": "#b7aa91",
+      "crystal": "#8b5cff",
+      "emissive": "#6c24ff",
+      "projectile": "#9b62ff"
+    },
+    "interactions": {
+      "harvest": { "color": "#d9aa45", "emissive": "#8b681f" },
+      "encounter": { "color": "#7d4cff", "emissive": "#5b26d9" },
+      "doorStone": { "color": "#322d35", "emissive": "#08070a" },
+      "doorGate": { "color": "#8a6b4f", "emissive": "#4f2e16" },
+      "portal": { "color": "#276575", "emissive": "#173943" },
+      "portalActive": "#42e4ff"
+    }
+  },
+  "assets": [],
+  "placements": [],
+  "decorations": [
+    { "id": "decoration.ember_wall_north", "x": 0, "y": 0.75, "z": -5.5, "width": 11, "height": 1.5, "depth": 0.5, "color": "#2d2020" },
+    { "id": "decoration.ember_wall_south", "x": 0, "y": 0.75, "z": 5.5, "width": 11, "height": 1.5, "depth": 0.5, "color": "#2d2020" },
+    { "id": "decoration.ember_pillar_a", "x": -5, "y": 1.2, "z": -4, "width": 0.8, "height": 2.4, "depth": 0.8, "color": "#4a2a22" },
+    { "id": "decoration.ember_pillar_b", "x": -5, "y": 1.2, "z": 4, "width": 0.8, "height": 2.4, "depth": 0.8, "color": "#4a2a22" },
+    { "id": "decoration.ember_pillar_c", "x": 5, "y": 1.2, "z": -4, "width": 0.8, "height": 2.4, "depth": 0.8, "color": "#4a2a22" },
+    { "id": "decoration.ember_pillar_d", "x": 5, "y": 1.2, "z": 4, "width": 0.8, "height": 2.4, "depth": 0.8, "color": "#4a2a22" }
+  ],
+  "budgets": { "dynamicLights": 1, "estimatedDrawItems": 64, "estimatedTriangles": 5000 }
+}

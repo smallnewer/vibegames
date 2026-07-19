@@ -1,0 +1,525 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://blocky-wilds.local/schema/dungeon.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "name",
+    "lore",
+    "manifest",
+    "map",
+    "spawnPoints",
+    "enemies",
+    "encounters",
+    "interactions",
+    "visual",
+    "assets",
+    "placements",
+    "decorations",
+    "budgets"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "id": { "$ref": "#/$defs/stableId" },
+    "name": { "type": "string", "minLength": 1, "maxLength": 80 },
+    "lore": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["region", "summary", "boss"],
+      "properties": {
+        "region": { "type": "string", "minLength": 1, "maxLength": 40 },
+        "summary": { "type": "string", "minLength": 10, "maxLength": 240 },
+        "boss": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["name", "title", "background"],
+          "properties": {
+            "name": { "type": "string", "minLength": 1, "maxLength": 40 },
+            "title": { "type": "string", "minLength": 1, "maxLength": 40 },
+            "background": { "type": "string", "minLength": 10, "maxLength": 240 }
+          }
+        }
+      }
+    },
+    "manifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["themeId", "resource"],
+      "properties": {
+        "themeId": { "$ref": "#/$defs/stableId" },
+        "resource": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "name"],
+          "properties": {
+            "id": { "$ref": "#/$defs/stableId" },
+            "name": { "type": "string", "minLength": 1, "maxLength": 40 }
+          }
+        }
+      }
+    },
+    "run": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gameplayVersion", "levelBand", "entrySection", "bossEncounter", "completionPortal"],
+      "properties": {
+        "gameplayVersion": { "const": 1 },
+        "levelBand": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["normal", "echo"],
+          "properties": {
+            "normal": { "$ref": "#/$defs/levelBand" },
+            "echo": { "$ref": "#/$defs/levelBand" }
+          }
+        },
+        "entrySection": { "$ref": "#/$defs/stableId" },
+        "bossEncounter": { "$ref": "#/$defs/stableId" },
+        "completionPortal": { "$ref": "#/$defs/stableId" },
+        "firstClearUnlock": { "$ref": "#/$defs/stableId" }
+      }
+    },
+    "map": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "screenWidth", "screenDepth", "bounds", "sections", "navigation"],
+      "properties": {
+        "mode": { "enum": ["showcase", "production"] },
+        "screenWidth": { "const": 18 },
+        "screenDepth": { "const": 12 },
+        "bounds": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["minX", "maxX", "minZ", "maxZ"],
+          "properties": {
+            "minX": { "$ref": "#/$defs/mapCoordinate" },
+            "maxX": { "$ref": "#/$defs/mapCoordinate" },
+            "minZ": { "$ref": "#/$defs/mapCoordinate" },
+            "maxZ": { "$ref": "#/$defs/mapCoordinate" }
+          }
+        },
+        "sections": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 16,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "preset", "gridX", "gridZ", "rotation"],
+            "properties": {
+              "id": { "$ref": "#/$defs/stableId" },
+              "zone": { "$ref": "#/$defs/stableId" },
+              "name": { "type": "string", "minLength": 1, "maxLength": 40 },
+              "preset": {
+                "enum": [
+                  "foundation_room",
+                  "lava_bridge_arena",
+                  "entry_hall",
+                  "living_quarters",
+                  "stone_corridor",
+                  "training_arena",
+                  "workshop",
+                  "boss_arena"
+                ]
+              },
+              "gridX": { "type": "integer", "minimum": -20, "maximum": 20 },
+              "gridZ": { "type": "integer", "minimum": -20, "maximum": 20 },
+              "rotation": { "enum": [0, 90, 180, 270] }
+            }
+          }
+        },
+        "navigation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["walkable", "blockers"],
+          "properties": {
+            "walkable": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 64,
+              "items": { "$ref": "#/$defs/navigationSurface" }
+            },
+            "blockers": {
+              "type": "array",
+              "maxItems": 128,
+              "items": { "$ref": "#/$defs/staticBlocker" }
+            }
+          }
+        }
+      }
+    },
+    "spawnPoints": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 4,
+      "items": { "$ref": "#/$defs/point" }
+    },
+    "encounterSpawns": {
+      "type": "array",
+      "maxItems": 30,
+      "items": { "$ref": "#/$defs/point" }
+    },
+    "enemies": {
+      "type": "array",
+      "maxItems": 128,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "kind", "encounter", "x", "z"],
+        "properties": {
+          "id": { "$ref": "#/$defs/stableId" },
+          "kind": { "type": "string", "pattern": "^(enemy|boss)\\.[a-z0-9_]+$" },
+          "encounter": { "$ref": "#/$defs/stableId" },
+          "x": { "$ref": "#/$defs/mapCoordinate" },
+          "z": { "$ref": "#/$defs/mapCoordinate" }
+        }
+      }
+    },
+    "encounters": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "items": {
+        "oneOf": [
+          { "$ref": "#/$defs/legacyEncounter" },
+          { "$ref": "#/$defs/runtimeEncounter" }
+        ]
+      }
+    },
+    "interactions": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 16,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "kind", "trigger", "x", "z", "radius"],
+        "properties": {
+          "id": { "$ref": "#/$defs/stableId" },
+          "name": { "type": "string", "minLength": 1, "maxLength": 60 },
+          "kind": { "enum": ["harvest", "encounter", "door", "portal"] },
+          "trigger": { "enum": ["interact", "enter"] },
+          "x": { "$ref": "#/$defs/mapCoordinate" },
+          "z": { "$ref": "#/$defs/mapCoordinate" },
+          "radius": { "type": "number", "minimum": 0.1, "maximum": 8 },
+          "encounter": { "$ref": "#/$defs/stableId" },
+          "reward": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["resource", "name", "amount"],
+            "properties": {
+              "resource": { "$ref": "#/$defs/stableId" },
+              "name": { "type": "string", "minLength": 1, "maxLength": 40 },
+              "amount": { "type": "integer", "minimum": 1, "maximum": 99 }
+            }
+          },
+          "destination": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["x", "z"],
+            "properties": {
+              "x": { "$ref": "#/$defs/mapCoordinate" },
+              "z": { "$ref": "#/$defs/mapCoordinate" }
+            }
+          }
+        },
+        "allOf": [
+          {
+            "if": { "properties": { "kind": { "const": "harvest" } }, "required": ["kind"] },
+            "then": { "required": ["reward"] }
+          },
+          {
+            "if": { "properties": { "kind": { "const": "portal" } }, "required": ["kind"] },
+            "then": { "required": ["destination"] }
+          },
+          {
+            "if": { "properties": { "kind": { "const": "encounter" } }, "required": ["kind"] },
+            "then": { "required": ["encounter"] }
+          }
+        ]
+      }
+    },
+    "visual": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["profile", "clearColor", "groundColor", "groundSize", "enemy", "interactions"],
+      "properties": {
+        "profile": { "enum": ["foundation", "lava_fortress", "voxel_dungeon"] },
+        "clearColor": { "$ref": "#/$defs/color" },
+        "groundColor": { "$ref": "#/$defs/color" },
+        "groundSize": { "type": "number", "minimum": 6, "maximum": 30 },
+        "palette": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["stone", "rock", "metal", "wood", "rune", "hazard", "light"],
+          "properties": {
+            "stone": { "$ref": "#/$defs/colorRamp" },
+            "rock": { "$ref": "#/$defs/colorRamp" },
+            "metal": { "$ref": "#/$defs/colorRamp" },
+            "wood": { "$ref": "#/$defs/colorRamp" },
+            "rune": { "$ref": "#/$defs/colorRamp" },
+            "hazard": { "$ref": "#/$defs/colorRamp" },
+            "light": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["fill", "key", "accent", "fog"],
+              "properties": {
+                "fill": { "$ref": "#/$defs/color" },
+                "key": { "$ref": "#/$defs/color" },
+                "accent": { "$ref": "#/$defs/color" },
+                "fog": { "$ref": "#/$defs/color" }
+              }
+            }
+          }
+        },
+        "enemy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["stone", "bone", "crystal", "emissive", "projectile"],
+          "properties": {
+            "stone": { "$ref": "#/$defs/color" },
+            "bone": { "$ref": "#/$defs/color" },
+            "crystal": { "$ref": "#/$defs/color" },
+            "emissive": { "$ref": "#/$defs/color" },
+            "projectile": { "$ref": "#/$defs/color" }
+          }
+        },
+        "interactions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["harvest", "encounter", "doorStone", "doorGate", "portal", "portalActive"],
+          "properties": {
+            "harvest": { "$ref": "#/$defs/colorPair" },
+            "encounter": { "$ref": "#/$defs/colorPair" },
+            "doorStone": { "$ref": "#/$defs/colorPair" },
+            "doorGate": { "$ref": "#/$defs/colorPair" },
+            "portal": { "$ref": "#/$defs/colorPair" },
+            "portalActive": { "$ref": "#/$defs/color" }
+          }
+        }
+      }
+    },
+    "assets": {
+      "type": "array",
+      "maxItems": 128,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "kind", "url"],
+        "properties": {
+          "id": { "$ref": "#/$defs/stableId" },
+          "kind": { "const": "model" },
+          "url": { "type": "string", "minLength": 1, "maxLength": 240 }
+        }
+      }
+    },
+    "placements": {
+      "type": "array",
+      "maxItems": 256,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "asset", "section", "x", "y", "z", "rotationY", "scale"],
+        "properties": {
+          "id": { "$ref": "#/$defs/stableId" },
+          "asset": { "$ref": "#/$defs/stableId" },
+          "section": { "$ref": "#/$defs/stableId" },
+          "x": { "$ref": "#/$defs/mapCoordinate" },
+          "y": { "type": "number", "minimum": -10, "maximum": 30 },
+          "z": { "$ref": "#/$defs/mapCoordinate" },
+          "rotationY": { "type": "number", "minimum": -6.284, "maximum": 6.284 },
+          "scale": { "type": "number", "exclusiveMinimum": 0, "maximum": 20 }
+        }
+      }
+    },
+    "decorations": {
+      "type": "array",
+      "maxItems": 128,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "x", "y", "z", "width", "height", "depth", "color"],
+        "properties": {
+          "id": { "$ref": "#/$defs/stableId" },
+          "x": { "$ref": "#/$defs/mapCoordinate" },
+          "y": { "type": "number", "minimum": 0, "maximum": 12 },
+          "z": { "$ref": "#/$defs/mapCoordinate" },
+          "width": { "$ref": "#/$defs/dimension" },
+          "height": { "$ref": "#/$defs/dimension" },
+          "depth": { "$ref": "#/$defs/dimension" },
+          "color": { "$ref": "#/$defs/color" },
+          "emissive": { "$ref": "#/$defs/color" }
+        }
+      }
+    },
+    "budgets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dynamicLights", "estimatedDrawItems", "estimatedTriangles"],
+      "properties": {
+        "dynamicLights": { "type": "integer", "minimum": 0, "maximum": 1 },
+        "estimatedDrawItems": { "type": "integer", "minimum": 1, "maximum": 256 },
+        "estimatedTriangles": { "type": "integer", "minimum": 12, "maximum": 20000 }
+      }
+    }
+  },
+  "$defs": {
+    "stableId": { "type": "string", "pattern": "^[a-z][a-z0-9_.-]+$", "maxLength": 100 },
+    "coordinate": { "type": "number", "minimum": -30, "maximum": 30 },
+    "mapCoordinate": { "type": "number", "minimum": -500, "maximum": 500 },
+    "dimension": { "type": "number", "exclusiveMinimum": 0, "maximum": 30 },
+    "levelBand": {
+      "type": "array",
+      "prefixItems": [
+        { "type": "integer", "minimum": 1, "maximum": 30 },
+        { "type": "integer", "minimum": 1, "maximum": 30 }
+      ],
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "color": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" },
+    "colorPair": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["color", "emissive"],
+      "properties": {
+        "color": { "$ref": "#/$defs/color" },
+        "emissive": { "$ref": "#/$defs/color" }
+      }
+    },
+    "colorRamp": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["base", "dark", "light"],
+      "properties": {
+        "base": { "$ref": "#/$defs/color" },
+        "dark": { "$ref": "#/$defs/color" },
+        "light": { "$ref": "#/$defs/color" }
+      }
+    },
+    "point": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "x", "z"],
+      "properties": {
+        "id": { "$ref": "#/$defs/stableId" },
+        "x": { "$ref": "#/$defs/mapCoordinate" },
+        "z": { "$ref": "#/$defs/mapCoordinate" }
+      }
+    },
+    "legacyEncounter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "members"],
+      "properties": {
+        "id": { "$ref": "#/$defs/stableId" },
+        "members": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 64,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/stableId" }
+        }
+      }
+    },
+    "runtimeEncounter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "trigger", "lockInteractions", "waves", "rewardTable"],
+      "properties": {
+        "id": { "$ref": "#/$defs/stableId" },
+        "kind": { "enum": ["normal", "elite", "boss"] },
+        "trigger": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["section", "x", "z", "radius"],
+          "properties": {
+            "section": { "$ref": "#/$defs/stableId" },
+            "x": { "$ref": "#/$defs/mapCoordinate" },
+            "z": { "$ref": "#/$defs/mapCoordinate" },
+            "radius": { "type": "number", "minimum": 0.1, "maximum": 8 }
+          }
+        },
+        "lockInteractions": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/stableId" }
+        },
+        "waves": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["delay", "members"],
+            "properties": {
+              "delay": { "type": "number", "minimum": 0, "maximum": 30 },
+              "members": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 12,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["id", "actor", "spawn", "levelOffset"],
+                  "properties": {
+                    "id": { "$ref": "#/$defs/stableId" },
+                    "actor": { "type": "string", "pattern": "^(enemy|elite|boss)\\.[a-z0-9_]+$" },
+                    "spawn": { "$ref": "#/$defs/stableId" },
+                    "levelOffset": { "type": "integer", "minimum": -5, "maximum": 10 },
+                    "eliteAffix": { "$ref": "#/$defs/stableId" }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "rewardTable": { "$ref": "#/$defs/stableId" },
+        "checkpoint": { "$ref": "#/$defs/stableId" },
+        "bossPhases": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/stableId" }
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "kind": { "const": "boss" } }, "required": ["kind"] },
+          "then": { "required": ["checkpoint", "bossPhases"] }
+        }
+      ]
+    },
+    "navigationSurface": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "x", "z", "width", "depth"],
+      "properties": {
+        "id": { "$ref": "#/$defs/stableId" },
+        "x": { "$ref": "#/$defs/mapCoordinate" },
+        "z": { "$ref": "#/$defs/mapCoordinate" },
+        "width": { "type": "number", "exclusiveMinimum": 0, "maximum": 500 },
+        "depth": { "type": "number", "exclusiveMinimum": 0, "maximum": 500 }
+      }
+    },
+    "staticBlocker": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "x", "z", "width", "depth", "height"],
+      "properties": {
+        "id": { "$ref": "#/$defs/stableId" },
+        "x": { "$ref": "#/$defs/mapCoordinate" },
+        "z": { "$ref": "#/$defs/mapCoordinate" },
+        "width": { "type": "number", "exclusiveMinimum": 0, "maximum": 500 },
+        "depth": { "type": "number", "exclusiveMinimum": 0, "maximum": 500 },
+        "height": { "type": "number", "exclusiveMinimum": 0, "maximum": 20 }
+      }
+    }
+  }
+}

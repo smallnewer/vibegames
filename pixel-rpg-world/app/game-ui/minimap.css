@@ -1,0 +1,37 @@
+.minimap {
+  position: absolute;
+  top: calc(var(--hud-edge) + env(safe-area-inset-top));
+  right: calc(var(--hud-edge) + env(safe-area-inset-right));
+  width: 176px;
+  height: 132px;
+  border: 1px solid rgba(194, 181, 151, 0.24);
+  background: radial-gradient(circle, rgba(20, 25, 28, 0.86), rgba(7, 9, 12, 0.88));
+  box-shadow: inset 0 0 22px rgba(0, 0, 0, 0.62), 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.minimap svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.minimap-sections rect { vector-effect: non-scaling-stroke; }
+.minimap-sections .is-discovered { fill: rgba(112, 104, 91, 0.34); stroke: #a9977c; stroke-width: 1; }
+.minimap-sections .is-adjacent { fill: rgba(79, 84, 84, 0.08); stroke: rgba(151, 157, 151, 0.36); stroke-width: 0.8; stroke-dasharray: 2 2; }
+.minimap-connections line { stroke: rgba(195, 177, 139, 0.58); stroke-width: 2; }
+.map-marker { fill: none; stroke: #d9c49a; stroke-width: 1.3; vector-effect: non-scaling-stroke; }
+.map-marker--objective { fill: #edb44e; stroke: #fff0aa; }
+.map-marker--door { stroke: #bdb4a0; }
+.map-marker--boss { fill: #b4404e; stroke: #ff9a82; }
+.map-marker--exit { fill: rgba(62, 190, 183, 0.2); stroke: #70e3dc; }
+.map-player { transition: transform 100ms linear; }
+.map-player use { stroke-width: 1.2; vector-effect: non-scaling-stroke; }
+.map-player--1 use { fill: #62d8e7; stroke: #d5fbff; }
+.map-player--2 use { fill: #f0a952; stroke: #fff0c4; }
+.map-player--3 use { fill: #9ac965; stroke: #e9ffc8; }
+.map-player--4 use { fill: #b58ae8; stroke: #f0dcff; }
+.map-player[data-life-state="downed"] { opacity: 0.55; animation: map-player-pulse 0.75s infinite alternate; }
+@keyframes map-player-pulse { to { opacity: 1; } }
+
+@media (max-height: 800px) {
+  .minimap { width: 144px; height: 108px; }
+}
+
+@media (max-width: 760px) {
+  .minimap { width: 132px; height: 99px; }
+}

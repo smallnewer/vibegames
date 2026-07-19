@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "bases": [
+    { "id": "item.base.sword", "slot": "melee", "iconFamily": "icon.weapon.sword", "visual": "equipment.weapon.guard_sword", "theme": "theme.neutral", "coreStat": "meleePower", "baseMin": 0.9, "baseMax": 1.1, "affixTags": ["offense", "attribute", "utility"] },
+    { "id": "item.base.longblade", "slot": "melee", "iconFamily": "icon.weapon.longblade", "visual": "equipment.weapon.rust_blade", "theme": "theme.ember", "coreStat": "meleePower", "baseMin": 1, "baseMax": 1.2, "affixTags": ["offense", "attribute", "utility"] },
+    { "id": "item.base.axe", "slot": "melee", "iconFamily": "icon.weapon.axe", "visual": "equipment.weapon.frontier_axe", "theme": "theme.neutral", "coreStat": "meleePower", "baseMin": 1.05, "baseMax": 1.25, "affixTags": ["offense", "attribute"] },
+    { "id": "item.base.bow", "slot": "ranged", "iconFamily": "icon.weapon.bow", "visual": "equipment.weapon.hunter_bow", "theme": "theme.neutral", "coreStat": "rangedPower", "baseMin": 0.9, "baseMax": 1.1, "affixTags": ["offense", "attribute", "utility"] },
+    { "id": "item.base.crossbow", "slot": "ranged", "iconFamily": "icon.weapon.crossbow", "visual": "equipment.weapon.hunter_bow", "theme": "theme.tide", "coreStat": "rangedPower", "baseMin": 1.05, "baseMax": 1.25, "affixTags": ["offense", "attribute"] },
+    { "id": "item.base.focus", "slot": "ranged", "iconFamily": "icon.weapon.focus", "visual": "equipment.weapon.hunter_bow", "theme": "theme.spore", "coreStat": "skillPower", "baseMin": 0.95, "baseMax": 1.15, "affixTags": ["offense", "resist", "utility"] },
+    { "id": "item.base.head", "slot": "head", "iconFamily": "icon.armor.head", "visual": "equipment.head.traveler_cap", "theme": "theme.neutral", "coreStat": "armor", "baseMin": 0.6, "baseMax": 0.8, "affixTags": ["defense", "resist", "attribute", "utility"] },
+    { "id": "item.base.chest", "slot": "chest", "iconFamily": "icon.armor.chest", "visual": "equipment.chest.traveler_tunic", "theme": "theme.neutral", "coreStat": "armor", "baseMin": 1, "baseMax": 1.3, "affixTags": ["defense", "resist", "attribute"] },
+    { "id": "item.base.wrists", "slot": "wrists", "iconFamily": "icon.armor.wrists", "visual": "equipment.wrists.traveler_bracers", "theme": "theme.tide", "coreStat": "armor", "baseMin": 0.45, "baseMax": 0.65, "affixTags": ["defense", "offense", "utility"] },
+    { "id": "item.base.legs", "slot": "legs", "iconFamily": "icon.armor.legs", "visual": "equipment.legs.traveler_pants", "theme": "theme.spore", "coreStat": "armor", "baseMin": 0.8, "baseMax": 1, "affixTags": ["defense", "resist", "attribute"] },
+    { "id": "item.base.feet", "slot": "feet", "iconFamily": "icon.armor.feet", "visual": "equipment.feet.traveler_boots", "theme": "theme.storm", "coreStat": "armor", "baseMin": 0.5, "baseMax": 0.7, "affixTags": ["defense", "resist", "utility"] }
+  ]
+}

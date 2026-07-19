@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "visuals": [
+    {
+      "id": "visual.actor.ember_hero",
+      "appearance": "appearance.hero.ember",
+      "asset": "asset.actor.humanoid_combat",
+      "url": "/game-assets/actors/humanoid-combat.gltf",
+      "scale": 0.78,
+      "yOffset": 0,
+      "rotationY": 0,
+      "animations": {
+        "idle": "Idle_Loop",
+        "run": "Sprint_Loop",
+        "roll": "Roll",
+        "melee": "Sword_Attack",
+        "ranged": "Library_Bow_Shoot",
+        "skill": "Spell_Simple_Shoot",
+        "hit": "Hit_Chest",
+        "dead": "Death01"
+      },
+      "humanoidActions": {
+        "melee": ["Sword_Attack", "Sword_Attack_RM"],
+        "bow": "Library_Bow_Shoot",
+        "cast": {
+          "enter": "Spell_Simple_Enter",
+          "loop": "Spell_Simple_Idle_Loop",
+          "release": "Spell_Simple_Shoot",
+          "exit": "Spell_Simple_Exit"
+        }
+      },
+      "animationEvents": {
+        "Sword_Attack": [{ "id": "slash", "at": 0.42 }],
+        "Sword_Attack_RM": [{ "id": "slash", "at": 0.44 }]
+      },
+      "playback": {
+        "melee": { "layer": "upper", "exitAt": 1, "blendSpeed": 0.1 },
+        "ranged": { "layer": "upper", "exitAt": 1, "blendSpeed": 0.1 },
+        "skill": { "layer": "full", "exitAt": 1, "blendSpeed": 0.1 }
+      },
+      "sockets": {
+        "melee": {
+          "node": "socket.weapon.right",
+          "fallback": { "x": 0.55, "y": 1.2, "z": 0.25 }
+        },
+        "ranged": {
+          "node": "hand_l",
+          "fallback": { "x": -0.55, "y": 1.2, "z": 0.25 }
+        }
+      },
+      "budget": {
+        "maxBytes": 4000000,
+        "maxTriangles": 20000,
+        "maxBones": 80,
+        "maxTextures": 4,
+        "maxAnimations": 24
+      },
+      "lod": { "maxAnimatedInstances": 4, "fallback": "voxel" }
+    },
+    {
+      "id": "visual.actor.ember_minion",
+      "appearance": "appearance.minion.ember",
+      "asset": "asset.actor.humanoid_combat",
+      "url": "/game-assets/actors/humanoid-combat.gltf",
+      "scale": 0.68,
+      "yOffset": 0,
+      "rotationY": 0,
+      "animations": {
+        "idle": "Idle_Loop",
+        "run": "Sprint_Loop",
+        "roll": "Roll",
+        "melee": "Sword_Attack",
+        "ranged": "Library_Bow_Shoot",
+        "skill": "Spell_Simple_Shoot",
+        "hit": "Hit_Chest",
+        "dead": "Death01"
+      },
+      "humanoidActions": {
+        "melee": ["Sword_Attack", "Sword_Attack_RM"],
+        "bow": "Library_Bow_Shoot",
+        "cast": {
+          "enter": "Spell_Simple_Enter",
+          "loop": "Spell_Simple_Idle_Loop",
+          "release": "Spell_Simple_Shoot",
+          "exit": "Spell_Simple_Exit"
+        }
+      },
+      "animationEvents": {
+        "Sword_Attack": [{ "id": "slash", "at": 0.42 }],
+        "Sword_Attack_RM": [{ "id": "slash", "at": 0.44 }]
+      },
+      "playback": {
+        "melee": { "layer": "upper", "exitAt": 1, "blendSpeed": 0.1 },
+        "ranged": { "layer": "upper", "exitAt": 1, "blendSpeed": 0.1 },
+        "skill": { "layer": "full", "exitAt": 1, "blendSpeed": 0.1 }
+      },
+      "sockets": {
+        "melee": {
+          "node": "socket.weapon.right",
+          "fallback": { "x": 0.55, "y": 1.2, "z": 0.25 }
+        },
+        "ranged": {
+          "node": "hand_l",
+          "fallback": { "x": -0.55, "y": 1.2, "z": 0.25 }
+        }
+      },
+      "budget": {
+        "maxBytes": 4000000,
+        "maxTriangles": 20000,
+        "maxBones": 80,
+        "maxTextures": 4,
+        "maxAnimations": 24
+      },
+      "lod": { "maxAnimatedInstances": 4, "fallback": "voxel" }
+    },
+    {
+      "id": "visual.actor.ember_boss",
+      "appearance": "appearance.boss.ember",
+      "asset": "asset.actor.humanoid_combat",
+      "url": "/game-assets/actors/humanoid-combat.gltf",
+      "scale": 1.05,
+      "yOffset": 0,
+      "rotationY": 0,
+      "animations": {
+        "idle": "Idle_Loop",
+        "run": "Sprint_Loop",
+        "roll": "Roll",
+        "melee": "Sword_Attack",
+        "ranged": "Library_Bow_Shoot",
+        "skill": "Spell_Simple_Shoot",
+        "hit": "Hit_Chest",
+        "dead": "Death01"
+      },
+      "humanoidActions": {
+        "melee": ["Sword_Attack", "Sword_Attack_RM"],
+        "bow": "Library_Bow_Shoot",
+        "cast": {
+          "enter": "Spell_Simple_Enter",
+          "loop": "Spell_Simple_Idle_Loop",
+          "release": "Spell_Simple_Shoot",
+          "exit": "Spell_Simple_Exit"
+        }
+      },
+      "animationEvents": {
+        "Sword_Attack": [{ "id": "slash", "at": 0.42 }],
+        "Sword_Attack_RM": [{ "id": "slash", "at": 0.44 }]
+      },
+      "playback": {
+        "melee": { "layer": "upper", "exitAt": 1, "blendSpeed": 0.1 },
+        "ranged": { "layer": "upper", "exitAt": 1, "blendSpeed": 0.1 },
+        "skill": { "layer": "full", "exitAt": 1, "blendSpeed": 0.1 }
+      },
+      "sockets": {
+        "melee": {
+          "node": "socket.weapon.right",
+          "fallback": { "x": 0.55, "y": 1.2, "z": 0.25 }
+        },
+        "ranged": {
+          "node": "hand_l",
+          "fallback": { "x": -0.55, "y": 1.2, "z": 0.25 }
+        }
+      },
+      "budget": {
+        "maxBytes": 4000000,
+        "maxTriangles": 20000,
+        "maxBones": 80,
+        "maxTextures": 4,
+        "maxAnimations": 24
+      },
+      "lod": { "maxAnimatedInstances": 1, "fallback": "voxel" }
+    },
+    {
+      "id": "visual.actor.ember_sentinel",
+      "appearance": "appearance.sentinel.ember",
+      "asset": "asset.actor.humanoid_combat",
+      "url": "/game-assets/actors/humanoid-combat.gltf",
+      "scale": 0.75,
+      "yOffset": 0,
+      "rotationY": 0,
+      "animations": {
+        "idle": "Idle_Loop",
+        "run": "Sprint_Loop",
+        "roll": "Roll",
+        "melee": "Sword_Attack",
+        "ranged": "Library_Bow_Shoot",
+        "skill": "Spell_Simple_Shoot",
+        "hit": "Hit_Chest",
+        "dead": "Death01"
+      },
+      "humanoidActions": {
+        "melee": ["Sword_Attack", "Sword_Attack_RM"],
+        "bow": "Library_Bow_Shoot",
+        "cast": {
+          "enter": "Spell_Simple_Enter",
+          "loop": "Spell_Simple_Idle_Loop",
+          "release": "Spell_Simple_Shoot",
+          "exit": "Spell_Simple_Exit"
+        }
+      },
+      "animationEvents": {
+        "Sword_Attack": [{ "id": "slash", "at": 0.42 }],
+        "Sword_Attack_RM": [{ "id": "slash", "at": 0.44 }]
+      },
+      "playback": {
+        "melee": { "layer": "upper", "exitAt": 1, "blendSpeed": 0.1 },
+        "ranged": { "layer": "upper", "exitAt": 1, "blendSpeed": 0.1 },
+        "skill": { "layer": "full", "exitAt": 1, "blendSpeed": 0.1 }
+      },
+      "sockets": {
+        "melee": {
+          "node": "socket.weapon.right",
+          "fallback": { "x": 0.55, "y": 1.2, "z": 0.25 }
+        },
+        "ranged": {
+          "node": "hand_l",
+          "fallback": { "x": -0.55, "y": 1.2, "z": 0.25 }
+        }
+      },
+      "budget": {
+        "maxBytes": 4000000,
+        "maxTriangles": 20000,
+        "maxBones": 80,
+        "maxTextures": 4,
+        "maxAnimations": 24
+      },
+      "lod": { "maxAnimatedInstances": 4, "fallback": "voxel" }
+    },
+    {
+      "id": "visual.actor.fox",
+      "asset": "asset.actor.fox",
+      "url": "/game-assets/actors/fox.glb",
+      "scale": 0.025,
+      "yOffset": 0,
+      "rotationY": 3.141593,
+      "animations": {
+        "idle": "Survey",
+        "run": "Run",
+        "roll": "Run",
+        "melee": "Walk",
+        "ranged": "Survey",
+        "skill": "Survey",
+        "hit": "Survey",
+        "dead": "Survey"
+      },
+      "sockets": {
+        "melee": {
+          "node": "b_Head_05",
+          "fallback": { "x": 0, "y": 0.7, "z": 0.8 }
+        },
+        "ranged": {
+          "node": "b_Head_05",
+          "fallback": { "x": 0, "y": 0.8, "z": 0.5 }
+        }
+      },
+      "budget": {
+        "maxBytes": 250000,
+        "maxTriangles": 20000,
+        "maxBones": 32,
+        "maxTextures": 2,
+        "maxAnimations": 4
+      },
+      "lod": { "maxAnimatedInstances": 4, "fallback": "voxel" }
+    }
+  ]
+}

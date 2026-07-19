@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://blocky-wilds.local/schema/balance.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version", "levelCap", "xpExponent", "attributePointsPerLevel",
+    "startingSkillPoints", "skillPointEveryLevels", "skillRankMultipliers",
+    "resistanceMin", "resistanceMax", "armorCap", "partyHealth",
+    "partyDamage", "partyLoot", "rarityWeights", "reinforcement"
+  ],
+  "properties": {
+    "version": { "const": 1 },
+    "levelCap": { "const": 30 },
+    "xpExponent": { "type": "number", "exclusiveMinimum": 1, "maximum": 3 },
+    "attributePointsPerLevel": { "type": "integer", "minimum": 1, "maximum": 10 },
+    "startingSkillPoints": { "type": "integer", "minimum": 0, "maximum": 10 },
+    "skillPointEveryLevels": { "type": "integer", "minimum": 1, "maximum": 10 },
+    "skillRankMultipliers": {
+      "type": "array", "minItems": 5, "maxItems": 5,
+      "items": { "type": "number", "exclusiveMinimum": 0, "maximum": 10 }
+    },
+    "resistanceMin": { "type": "number", "minimum": -1, "maximum": 0 },
+    "resistanceMax": { "type": "number", "minimum": 0, "maximum": 0.75 },
+    "armorCap": { "type": "number", "exclusiveMinimum": 0, "maximum": 0.65 },
+    "partyHealth": { "$ref": "#/$defs/partyScale" },
+    "partyDamage": { "$ref": "#/$defs/partyScale" },
+    "partyLoot": { "$ref": "#/$defs/partyScale" },
+    "rarityWeights": {
+      "type": "object", "additionalProperties": false,
+      "required": ["normal", "magic", "rare", "unique"],
+      "properties": {
+        "normal": { "type": "number", "minimum": 0, "maximum": 1 },
+        "magic": { "type": "number", "minimum": 0, "maximum": 1 },
+        "rare": { "type": "number", "minimum": 0, "maximum": 1 },
+        "unique": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "reinforcement": {
+      "type": "array", "minItems": 5, "maxItems": 5,
+      "items": { "$ref": "#/$defs/reinforcement" }
+    }
+  },
+  "$defs": {
+    "partyScale": {
+      "type": "array", "minItems": 4, "maxItems": 4,
+      "items": { "type": "number", "exclusiveMinimum": 0, "maximum": 10 }
+    },
+    "reinforcement": {
+      "type": "object", "additionalProperties": false,
+      "required": ["level", "baseMultiplier", "scrap", "essence", "seal"],
+      "properties": {
+        "level": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "baseMultiplier": { "type": "number", "minimum": 1, "maximum": 3 },
+        "scrap": { "type": "integer", "minimum": 0, "maximum": 999 },
+        "essence": { "type": "integer", "minimum": 0, "maximum": 999 },
+        "seal": { "type": "integer", "minimum": 0, "maximum": 999 }
+      }
+    }
+  }
+}

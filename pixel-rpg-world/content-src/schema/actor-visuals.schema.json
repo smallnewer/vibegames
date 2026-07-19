@@ -1,0 +1,176 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://blocky-wilds.local/schema/actor-visuals.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "visuals"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "visuals": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 64,
+      "items": { "$ref": "#/$defs/visual" }
+    }
+  },
+  "$defs": {
+    "stableId": { "type": "string", "pattern": "^[a-z][a-z0-9_.-]+$", "maxLength": 100 },
+    "position": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["x", "y", "z"],
+      "properties": {
+        "x": { "type": "number", "minimum": -20, "maximum": 20 },
+        "y": { "type": "number", "minimum": -20, "maximum": 20 },
+        "z": { "type": "number", "minimum": -20, "maximum": 20 }
+      }
+    },
+    "socket": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fallback"],
+      "properties": {
+        "node": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "fallback": { "$ref": "#/$defs/position" }
+      }
+    },
+    "visual": {
+      "type": "object",
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": { "appearance": true },
+            "required": ["appearance"]
+          },
+          "then": {
+            "properties": { "humanoidActions": true },
+            "required": ["humanoidActions"]
+          }
+        }
+      ],
+      "required": ["id", "asset", "url", "scale", "yOffset", "rotationY", "animations", "sockets", "budget", "lod"],
+      "properties": {
+        "id": { "$ref": "#/$defs/stableId" },
+        "appearance": { "$ref": "#/$defs/stableId" },
+        "asset": { "$ref": "#/$defs/stableId" },
+        "url": { "type": "string", "minLength": 1, "maxLength": 240 },
+        "scale": { "type": "number", "exclusiveMinimum": 0, "maximum": 20 },
+        "yOffset": { "type": "number", "minimum": -20, "maximum": 20 },
+        "rotationY": { "type": "number", "minimum": -6.284, "maximum": 6.284 },
+        "animations": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["idle"],
+          "properties": {
+            "idle": { "type": "string", "minLength": 1, "maxLength": 100 },
+            "run": { "type": "string", "minLength": 1, "maxLength": 100 },
+            "roll": { "type": "string", "minLength": 1, "maxLength": 100 },
+            "melee": { "type": "string", "minLength": 1, "maxLength": 100 },
+            "ranged": { "type": "string", "minLength": 1, "maxLength": 100 },
+            "skill": { "type": "string", "minLength": 1, "maxLength": 100 },
+            "hit": { "type": "string", "minLength": 1, "maxLength": 100 },
+            "dead": { "type": "string", "minLength": 1, "maxLength": 100 }
+          }
+        },
+        "humanoidActions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["melee", "bow", "cast"],
+          "properties": {
+            "melee": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 8,
+              "uniqueItems": true,
+              "items": { "type": "string", "minLength": 1, "maxLength": 100 }
+            },
+            "bow": { "type": "string", "minLength": 1, "maxLength": 100 },
+            "cast": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["enter", "loop", "release", "exit"],
+              "properties": {
+                "enter": { "type": "string", "minLength": 1, "maxLength": 100 },
+                "loop": { "type": "string", "minLength": 1, "maxLength": 100 },
+                "release": { "type": "string", "minLength": 1, "maxLength": 100 },
+                "exit": { "type": "string", "minLength": 1, "maxLength": 100 }
+              }
+            }
+          }
+        },
+        "animationEvents": {
+          "type": "object",
+          "propertyNames": { "type": "string", "minLength": 1, "maxLength": 100 },
+          "additionalProperties": {
+            "type": "array",
+            "maxItems": 16,
+            "items": { "$ref": "#/$defs/animationEvent" }
+          }
+        },
+        "playback": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "idle": { "$ref": "#/$defs/playback" },
+            "run": { "$ref": "#/$defs/playback" },
+            "roll": { "$ref": "#/$defs/playback" },
+            "melee": { "$ref": "#/$defs/playback" },
+            "ranged": { "$ref": "#/$defs/playback" },
+            "skill": { "$ref": "#/$defs/playback" },
+            "hit": { "$ref": "#/$defs/playback" },
+            "dead": { "$ref": "#/$defs/playback" }
+          }
+        },
+        "sockets": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["melee", "ranged"],
+          "properties": {
+            "melee": { "$ref": "#/$defs/socket" },
+            "ranged": { "$ref": "#/$defs/socket" }
+          }
+        },
+        "budget": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["maxBytes", "maxTriangles", "maxBones", "maxTextures", "maxAnimations"],
+          "properties": {
+            "maxBytes": { "type": "integer", "minimum": 1024, "maximum": 52428800 },
+            "maxTriangles": { "type": "integer", "minimum": 1, "maximum": 500000 },
+            "maxBones": { "type": "integer", "minimum": 0, "maximum": 256 },
+            "maxTextures": { "type": "integer", "minimum": 0, "maximum": 64 },
+            "maxAnimations": { "type": "integer", "minimum": 1, "maximum": 64 }
+          }
+        },
+        "lod": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["maxAnimatedInstances", "fallback"],
+          "properties": {
+            "maxAnimatedInstances": { "type": "integer", "minimum": 1, "maximum": 32 },
+            "fallback": { "const": "voxel" }
+          }
+        }
+      }
+    },
+    "playback": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "layer": { "enum": ["full", "upper"] },
+        "exitAt": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 },
+        "blendSpeed": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 }
+      }
+    },
+    "animationEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "at"],
+      "properties": {
+        "id": { "$ref": "#/$defs/stableId" },
+        "at": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    }
+  }
+}

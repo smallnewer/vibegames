@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "id": "dungeon.ice_room",
+  "name": "霜镜密室",
+  "lore": {
+    "region": "霜钟矿井",
+    "summary": "一间被永冻截断的矿井密室，冰层下仍回荡着旧升降钟的余音。",
+    "boss": {
+      "name": "霜镜守卫",
+      "title": "井下残影",
+      "background": "矿难后留下的守卫幻影，把每个闯入者都当成尚未撤离的矿工。"
+    }
+  },
+  "manifest": {
+    "themeId": "theme.frost_mirror",
+    "resource": { "id": "frost_shard", "name": "霜晶碎片" }
+  },
+  "map": {
+    "mode": "showcase",
+    "screenWidth": 18,
+    "screenDepth": 12,
+    "bounds": { "minX": -9, "maxX": 9, "minZ": -6, "maxZ": 6 },
+    "sections": [
+      { "id": "section.ice", "preset": "foundation_room", "gridX": 0, "gridZ": 0, "rotation": 0 }
+    ],
+    "navigation": {
+      "walkable": [
+        { "id": "walkable.ice", "x": 0, "z": 0, "width": 18, "depth": 12 }
+      ],
+      "blockers": [
+        { "id": "blocker.ice_spire_a", "x": -5.6, "z": -4.8, "width": 0.7, "depth": 0.7, "height": 3.2 },
+        { "id": "blocker.ice_spire_c", "x": 5.6, "z": -4.8, "width": 0.8, "depth": 0.8, "height": 2.6 }
+      ]
+    }
+  },
+  "spawnPoints": [
+    { "id": "spawn.ice_player_1", "x": -4, "z": -2 },
+    { "id": "spawn.ice_player_2", "x": -3, "z": -2 },
+    { "id": "spawn.ice_player_3", "x": -4, "z": -1 },
+    { "id": "spawn.ice_player_4", "x": -3, "z": -1 }
+  ],
+  "enemies": [
+    { "id": "enemy.ice_sentinel", "kind": "enemy.crystal_turret", "encounter": "encounter.frost_gate", "x": 2.5, "z": 0 }
+  ],
+  "encounters": [
+    { "id": "encounter.frost_gate", "members": ["enemy.ice_sentinel"] }
+  ],
+  "interactions": [
+    {
+      "id": "interaction.frost_shard",
+      "name": "霜晶碎片",
+      "kind": "harvest",
+      "trigger": "interact",
+      "x": -4,
+      "z": -1,
+      "radius": 1.4,
+      "reward": { "resource": "frost_shard", "name": "霜晶碎片", "amount": 1 }
+    },
+    {
+      "id": "interaction.frost_gate_trigger",
+      "name": "寒霜守卫遭遇",
+      "kind": "encounter",
+      "trigger": "enter",
+      "encounter": "encounter.frost_gate",
+      "x": -0.5,
+      "z": 0,
+      "radius": 1
+    },
+    {
+      "id": "interaction.frost_gate_door",
+      "name": "霜镜门",
+      "kind": "door",
+      "trigger": "interact",
+      "x": 1.5,
+      "z": 0,
+      "radius": 1.4
+    },
+    {
+      "id": "interaction.ice_return_portal",
+      "name": "冰镜传送门",
+      "kind": "portal",
+      "trigger": "interact",
+      "x": 3.8,
+      "z": 0,
+      "radius": 1.5,
+      "destination": { "x": -4, "z": 2.5 }
+    }
+  ],
+  "visual": {
+    "profile": "foundation",
+    "clearColor": "#06101c",
+    "groundColor": "#17354d",
+    "groundSize": 14,
+    "enemy": {
+      "stone": "#213649",
+      "bone": "#b9d9e8",
+      "crystal": "#65d9ff",
+      "emissive": "#237fa8",
+      "projectile": "#8de8ff"
+    },
+    "interactions": {
+      "harvest": { "color": "#b9ecff", "emissive": "#4eabc9" },
+      "encounter": { "color": "#5ac8fa", "emissive": "#246b9b" },
+      "doorStone": { "color": "#24445b", "emissive": "#0b1f32" },
+      "doorGate": { "color": "#8bc9dc", "emissive": "#2d758e" },
+      "portal": { "color": "#487aa3", "emissive": "#183a5a" },
+      "portalActive": "#c5f5ff"
+    }
+  },
+  "assets": [],
+  "placements": [],
+  "decorations": [
+    { "id": "decoration.ice_wall_north", "x": 0, "y": 1, "z": -6.4, "width": 13, "height": 2, "depth": 0.45, "color": "#173047" },
+    { "id": "decoration.ice_wall_south", "x": 0, "y": 1, "z": 6.4, "width": 13, "height": 2, "depth": 0.45, "color": "#173047" },
+    { "id": "decoration.ice_spire_a", "x": -5.6, "y": 1.6, "z": -4.8, "width": 0.7, "height": 3.2, "depth": 0.7, "color": "#74cce7", "emissive": "#1e617b" },
+    { "id": "decoration.ice_spire_b", "x": -5.6, "y": 1.2, "z": 4.8, "width": 0.8, "height": 2.4, "depth": 0.8, "color": "#74cce7", "emissive": "#1e617b" },
+    { "id": "decoration.ice_spire_c", "x": 5.6, "y": 1.3, "z": -4.8, "width": 0.8, "height": 2.6, "depth": 0.8, "color": "#74cce7", "emissive": "#1e617b" },
+    { "id": "decoration.ice_spire_d", "x": 5.6, "y": 1.7, "z": 4.8, "width": 0.7, "height": 3.4, "depth": 0.7, "color": "#74cce7", "emissive": "#1e617b" },
+    { "id": "decoration.ice_altar", "x": -0.5, "y": 0.2, "z": 2.8, "width": 2.2, "height": 0.4, "depth": 1.4, "color": "#315d76", "emissive": "#123d59" }
+  ],
+  "budgets": { "dynamicLights": 1, "estimatedDrawItems": 72, "estimatedTriangles": 6000 }
+}
